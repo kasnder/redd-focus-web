@@ -109,8 +109,6 @@ const cssSelectors = {
     whatsappNotificationPromptCssOff: 'span[data-testid="chat-butterbar"] { display: none !important; }',
 
     // Google
-    googleAdsCssOn: '#tads, #atvcap, .commercial-unit-desktop-rhs {display: block !important;}',
-    googleAdsCssOff: '#tads, #atvcap, .commercial-unit-desktop-rhs {display: none !important;}',
     googleBackgroundCssOn: '#tads, #atvcap .ptJHdc.yY236b.c3mZkd, #tads .CnP9N.U3A9Ac.irmCpc,.commercial-unit-mobile-top,.commercial-unit-mobile-top .v7hl4d,.commercial-unit-mobile-bottom .v7hl4d {background-color: transparent !important;}',
     googleBackgroundCssOff: '#tads, #atvcap .ptJHdc.yY236b.c3mZkd, #tads .CnP9N.U3A9Ac.irmCpc,.commercial-unit-mobile-top,.commercial-unit-mobile-top .v7hl4d,.commercial-unit-mobile-bottom .v7hl4d {background-color: #F2E6C3 !important;}',
     googleAIOverviewCssOn: '',
