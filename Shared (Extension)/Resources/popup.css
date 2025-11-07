@@ -6,14 +6,19 @@ body {
     width: 90vw;
     max-width: 400px;
     min-width: 300px;
-    min-height: 250px;
-    padding: 0.5rem 1rem 6rem 1rem;
+    min-height: 150px;
+    padding: 0.5rem 1rem 3rem 1rem;
     font-family: system-ui;
     text-align: center;
     background-color: #F5F5F5;
     color: #333333;
     overflow-x: hidden;
     box-sizing: border-box;
+}
+
+body.modal-open {
+    min-height: 300px;
+    margin-bottom: 2rem;
 }
 
 .website-toggle {
@@ -1128,12 +1133,12 @@ footer .friction-customisation {
     border: 1px solid #e4e4e7;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 10px 8px 0px 18px;
+    padding: 10px 8px 20px 18px;
     position: fixed;
     top: 2px;
     left: 2px;
     width: 90%;
-    max-height: 90vh;
+    max-height: 90%;
     overflow-y: auto;
     z-index: 1000;
     transform: none;
@@ -1234,7 +1239,18 @@ footer .friction-customisation {
 }
 
 #faq-close-btn {
+    position: sticky;
+    top: 0;
+    float: right;
+    background: white;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
     color: #000000;
+    z-index: 1001;
+    margin: -8px -8px 10px auto;
+    display: block;
 }
 
 

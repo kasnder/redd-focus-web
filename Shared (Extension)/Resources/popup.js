@@ -609,6 +609,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const isVisible = faqDropdown.style.display === 'block';
                 faqDropdown.style.display = isVisible ? 'none' : 'block';
                 faqOverlay.style.display = isVisible ? 'none' : 'block';
+                document.body.classList.toggle('modal-open', !isVisible);
             });
 
 
@@ -631,6 +632,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     event.stopPropagation();
                     faqDropdown.style.display = 'none';
                     faqOverlay.style.display = 'none';
+                    document.body.classList.remove('modal-open');
                 });
             }
 
@@ -639,6 +641,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (!faqDropdown.contains(event.target) && !helpBtn.contains(event.target)) {
                     faqDropdown.style.display = 'none';
                     faqOverlay.style.display = 'none';
+                    document.body.classList.remove('modal-open');
                 }
             });
         }
