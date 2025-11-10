@@ -17,7 +17,7 @@ body {
 }
 
 body.modal-open {
-    min-height: 300px;
+    min-height: 350px;
     margin-bottom: 2rem;
 }
 
@@ -939,6 +939,111 @@ button[id$="AddElementButton"].active {
     box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
 }
 
+/* Edit Dialog Styles */
+.edit-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px 0;
+    overflow-y: auto;
+    z-index: 10000;
+}
+
+.edit-dialog {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 90%;
+    width: 360px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.edit-dialog h3 {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.edit-dialog-field {
+    margin-bottom: 14px;
+}
+
+.edit-dialog-field label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+}
+
+.edit-dialog-field input,
+.edit-dialog-field textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #e4e4e7;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    font-family: system-ui;
+}
+
+.edit-dialog-field textarea {
+    resize: vertical;
+    font-family: monospace;
+    min-height: 80px;
+}
+
+.edit-dialog-field input:focus,
+.edit-dialog-field textarea:focus {
+    outline: none;
+    border-color: #0F172A;
+}
+
+.edit-dialog-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+.primary-btn, .secondary-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.primary-btn {
+    background-color: #0F172A;
+    color: white;
+    border-color: #0F172A;
+}
+
+.primary-btn:hover {
+    background-color: #1E293B;
+}
+
+.secondary-btn {
+    background-color: #f4f4f5;
+    color: #333;
+    border-color: #e4e4e7;
+}
+
+.secondary-btn:hover {
+    background-color: #e4e4e7;
+}
+
 /* --- Base Icon Button Style (shadcn-secondary inspired) --- */
 .icon-btn {
     display: inline-flex;
@@ -946,10 +1051,8 @@ button[id$="AddElementButton"].active {
     align-items: center;
     justify-content: center;
     border-radius: 6px;
-    /* A bit more rounded */
-    padding: 6px;
-    /* Increased padding for a better touch target */
-    margin: 0 3px;
+    padding: 4px;
+    margin: 0 2px 0 0;
     cursor: pointer;
 
     /* Subtle border and transparent background */
@@ -1164,7 +1267,7 @@ footer .friction-customisation {
 #help-icon-btn:hover { background-color: #2d2d2d; border-color: #2d2d2d; }
 
 #faq-dropdown h3 {
-    margin: 1.5em 0 0 0;
+    margin: 0.5em 0 0 0;
     font-size: 0.9em;
     font-weight: 600;
     color: #71717a;

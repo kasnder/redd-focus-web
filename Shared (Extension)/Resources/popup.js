@@ -289,6 +289,84 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function setupPlatformSwitchListener() { /* removed */ }
 
+        function showEditDialog(siteIdentifier, selector, name, onSave) {
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'edit-dialog-overlay';
+            
+            // Create dialog
+            const dialog = document.createElement('div');
+            dialog.className = 'edit-dialog';
+            
+            dialog.innerHTML = `
+                <h3>Edit Custom Element</h3>
+                <div class="edit-dialog-field">
+                    <label for="element-name">Name (optional):</label>
+                    <input type="text" id="element-name" class="shadcn-input" placeholder="e.g., Reels button" value="${name || ''}">
+                </div>
+                <div class="edit-dialog-field">
+                    <label for="element-selector">CSS Selector:</label>
+                    <textarea id="element-selector" class="shadcn-input" rows="3" placeholder="e.g., div.class-name">${selector}</textarea>
+                </div>
+                <div class="edit-dialog-buttons">
+                    <button id="cancel-edit" class="secondary-btn">Cancel</button>
+                    <button id="save-edit" class="primary-btn">Save</button>
+                </div>
+            `;
+            
+            overlay.appendChild(dialog);
+            document.body.appendChild(overlay);
+            
+            // Expand popup to accommodate dialog - force a specific height
+            document.body.classList.add('modal-open');
+            document.body.style.minHeight = '350px';
+            
+            // Focus name input
+            setTimeout(() => {
+                const nameInput = document.getElementById('element-name');
+                if (nameInput) {
+                    nameInput.focus();
+                }
+            }, 50);
+            
+            const closeDialog = function() {
+                document.body.removeChild(overlay);
+                document.body.classList.remove('modal-open');
+                document.body.style.minHeight = '';
+            };
+            
+            // Handle save
+            document.getElementById('save-edit').addEventListener('click', function() {
+                const newName = document.getElementById('element-name').value.trim();
+                const newSelector = document.getElementById('element-selector').value.trim();
+                
+                if (!newSelector) {
+                    alert('CSS Selector cannot be empty');
+                    return;
+                }
+                
+                onSave(newName, newSelector);
+                closeDialog();
+            });
+            
+            // Handle cancel
+            document.getElementById('cancel-edit').addEventListener('click', closeDialog);
+            
+            // Handle escape key
+            overlay.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeDialog();
+                }
+            });
+            
+            // Close on overlay click
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) {
+                    closeDialog();
+                }
+            });
+        }
+
         function updateCustomElementsList(siteIdentifier, selectors) {
             console.log('updateCustomElementsList called for', siteIdentifier, 'with selectors:', selectors);
             const containerId = currentPlatform ? `${siteIdentifier}CustomElements` : 'genericCustomElements';
@@ -304,12 +382,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 selectors = [];
             }
 
-            selectors.forEach(selector => {
+            selectors.forEach(item => {
+                // Support both old format (string) and new format (object with name and selector)
+                let selector, name;
+                if (typeof item === 'string') {
+                    selector = item;
+                    name = '';
+                } else {
+                    selector = item.selector || item;
+                    name = item.name || '';
+                }
+
                 const div = document.createElement('div');
                 div.className = 'custom-element';
 
                 const span = document.createElement('span');
-                span.textContent = selector;
+                span.textContent = name || selector;
                 span.title = selector;
 
                 const buttonsContainer = document.createElement('div');
@@ -324,56 +412,20 @@ document.addEventListener('DOMContentLoaded', function () {
                     </svg>`;
                 editButton.title = 'Edit';
                 editButton.addEventListener('click', function () {
-                    // Replace span with input for editing
-                    const input = document.createElement('input');
-                    input.type = 'text';
-                    input.className = 'selector-input';
-                    input.value = selector;
-                    
-                    // Replace span with input
-                    div.replaceChild(input, span);
-                    input.focus();
-                    input.select();
-                    
-                    // Change edit button to save button
-                    editButton.innerHTML = `
-                        <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>`;
-                    editButton.title = 'Save';
-                    editButton.className = 'icon-btn save-symbol';
-                    
-                    const saveEdit = function() {
-                        const newSelector = input.value.trim();
-                        if (!newSelector) {
-                            alert('Selector cannot be empty');
-                            return;
-                        }
-                        
+                    showEditDialog(siteIdentifier, selector, name, function(newName, newSelector) {
                         const storageKey = `${siteIdentifier}CustomHiddenElements`;
                         chrome.storage.sync.get(storageKey, function (result) {
                             let currentSelectors = result[storageKey] || [];
-                            const index = currentSelectors.indexOf(selector);
+                            const index = currentSelectors.findIndex(s => 
+                                (typeof s === 'string' ? s : s.selector) === selector
+                            );
                             if (index !== -1) {
-                                currentSelectors[index] = newSelector;
+                                currentSelectors[index] = { name: newName, selector: newSelector };
                                 chrome.storage.sync.set({ [storageKey]: currentSelectors }, function () {
                                     updateCustomElementsList(siteIdentifier, currentSelectors);
                                 });
                             }
                         });
-                    };
-                    
-                    // Save on button click
-                    editButton.onclick = saveEdit;
-                    
-                    // Save on Enter key
-                    input.addEventListener('keydown', function(e) {
-                        if (e.key === 'Enter') {
-                            saveEdit();
-                        } else if (e.key === 'Escape') {
-                            // Cancel editing
-                            updateCustomElementsList(siteIdentifier, selectors);
-                        }
                     });
                 });
 
@@ -390,7 +442,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     const storageKey = `${siteIdentifier}CustomHiddenElements`;
                     chrome.storage.sync.get(storageKey, function (result) {
                         let currentSelectors = result[storageKey] || [];
-                        currentSelectors = currentSelectors.filter(s => s !== selector);
+                        currentSelectors = currentSelectors.filter(s => 
+                            (typeof s === 'string' ? s : s.selector) !== selector
+                        );
                         chrome.storage.sync.set({ [storageKey]: currentSelectors }, function () {
                             updateCustomElementsList(siteIdentifier, currentSelectors);
                         });

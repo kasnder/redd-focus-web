@@ -411,7 +411,11 @@
 
     function applyCustomElementStyles(siteIdentifier, selectors) {
         const styleId = `customHidden_${siteIdentifier.replace(/\./g, '_')}Style`;
-        const css = selectors.length > 0 ? selectors.map(s => `${s} { display: none !important; }`).join('\n') : '';
+        // Support both old format (string) and new format (object with name and selector)
+        const css = selectors.length > 0 ? selectors.map(item => {
+            const selector = typeof item === 'string' ? item : (item.selector || item);
+            return `${selector} { display: none !important; }`;
+        }).join('\n') : '';
         createStyleElement(styleId, css);
     }
 
