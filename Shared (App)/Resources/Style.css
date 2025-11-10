@@ -428,8 +428,9 @@ body.platform-mac button.platform-ios {
 .optional-content-inner {
     padding: 0 20px 20px 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 16px;
+    align-items: flex-start;
 }
 
 .example-title {
@@ -473,49 +474,21 @@ body.platform-mac button.platform-ios {
     margin-top: 2px;
 }
 
-.video-preview-container {
-    width: 100%;
-    background-color: #F3F4F6;
-    border-radius: 8px;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    cursor: pointer;
-    min-height: 200px;
-    box-sizing: border-box;
+.shortcuts-instructions {
+    flex: 1;
+    min-width: 0;
 }
 
-.video-preview-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
+.video-container {
+    flex: 1;
+    min-width: 0;
 }
 
-.play-icon {
-    font-size: 48px;
-    color: var(--text-dark);
-}
-
-.video-preview-placeholder p {
-    font-size: 16px;
-    font-weight: bold;
-    color: var(--text-dark);
-    margin: 0;
-}
-
-.video-expanded {
-    width: 100%;
-    margin-top: 16px;
-}
-
-.video-expanded video {
+.video-container video {
     width: 100%;
     border-radius: 8px;
 }
+
 
 /* ============================================
    iPad Styles (keep existing structure)
