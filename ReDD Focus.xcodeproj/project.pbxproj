@@ -39,6 +39,8 @@
 		D73295602EC25183001F6550 /* mac-1-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = D73295572EC25183001F6550 /* mac-1-settings.png */; };
 		D73295612EC25183001F6550 /* mac-2-check.png in Resources */ = {isa = PBXBuildFile; fileRef = D73295582EC25183001F6550 /* mac-2-check.png */; };
 		D73295622EC25183001F6550 /* mac-3-warning.png in Resources */ = {isa = PBXBuildFile; fileRef = D73295592EC25183001F6550 /* mac-3-warning.png */; };
+		D73295642EC2547F001F6550 /* ios-1-ipad-extension.png in Resources */ = {isa = PBXBuildFile; fileRef = D73295632EC2547F001F6550 /* ios-1-ipad-extension.png */; };
+		D73295652EC2547F001F6550 /* ios-1-ipad-extension.png in Resources */ = {isa = PBXBuildFile; fileRef = D73295632EC2547F001F6550 /* ios-1-ipad-extension.png */; };
 		D7607A1D276792B100FB0E82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D76921C92756452E00EB4CEA /* Main.storyboard */; };
 		D76674E0294E282900F4863B /* iPhone_turn_on_two_anon.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D76674DE294E282900F4863B /* iPhone_turn_on_two_anon.jpeg */; };
 		D76674E1294E282900F4863B /* iPhone_turn_on_one_annotated.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D76674DF294E282900F4863B /* iPhone_turn_on_one_annotated.jpeg */; };
@@ -140,6 +142,7 @@
 		D73295582EC25183001F6550 /* mac-2-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mac-2-check.png"; sourceTree = "<group>"; };
 		D73295592EC25183001F6550 /* mac-3-warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mac-3-warning.png"; sourceTree = "<group>"; };
 		D732955A2EC25183001F6550 /* mac-4-allow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mac-4-allow.png"; sourceTree = "<group>"; };
+		D73295632EC2547F001F6550 /* ios-1-ipad-extension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-1-ipad-extension.png"; sourceTree = "<group>"; };
 		D76674DE294E282900F4863B /* iPhone_turn_on_two_anon.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhone_turn_on_two_anon.jpeg; sourceTree = "<group>"; };
 		D76674DF294E282900F4863B /* iPhone_turn_on_one_annotated.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhone_turn_on_one_annotated.jpeg; sourceTree = "<group>"; };
 		D769219E2756452C00EB4CEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
@@ -242,6 +245,7 @@
 				D73295592EC25183001F6550 /* mac-3-warning.png */,
 				D732955A2EC25183001F6550 /* mac-4-allow.png */,
 				5CD766682EBBAC870089C56F /* ios-1.png */,
+				D73295632EC2547F001F6550 /* ios-1-ipad-extension.png */,
 				5CD766692EBBAC870089C56F /* ios-2.png */,
 				5CD7666A2EBBAC870089C56F /* ios-3.png */,
 				5CD7666B2EBBAC870089C56F /* ios-4.png */,
@@ -463,6 +467,7 @@
 				D732955F2EC25183001F6550 /* mac-4-allow.png in Resources */,
 				D73295602EC25183001F6550 /* mac-1-settings.png in Resources */,
 				D73295612EC25183001F6550 /* mac-2-check.png in Resources */,
+				D73295642EC2547F001F6550 /* ios-1-ipad-extension.png in Resources */,
 				D73295622EC25183001F6550 /* mac-3-warning.png in Resources */,
 				D76E9F06294E487F0067C09D /* iPad_turn_on_one_annotated.jpeg in Resources */,
 				5CD766732EBBAC870089C56F /* ios-3.png in Resources */,
@@ -491,6 +496,7 @@
 			files = (
 				D732955B2EC25183001F6550 /* mac-4-allow.png in Resources */,
 				D732955C2EC25183001F6550 /* mac-1-settings.png in Resources */,
+				D73295652EC2547F001F6550 /* ios-1-ipad-extension.png in Resources */,
 				D732955D2EC25183001F6550 /* mac-2-check.png in Resources */,
 				D732955E2EC25183001F6550 /* mac-3-warning.png in Resources */,
 				D76921E72756452E00EB4CEA /* Style.css in Resources */,

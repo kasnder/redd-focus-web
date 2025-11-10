@@ -1,5 +1,17 @@
 function show(platform, enabled) {
     document.body.classList.add(`platform-${platform}`);
+    
+    // Detect iPad vs iPhone on iOS
+    if (platform === 'ios') {
+        const isIPad = navigator.userAgent.includes('iPad') || 
+                      (navigator.userAgent.includes('Macintosh') && navigator.maxTouchPoints > 1);
+        
+        if (isIPad) {
+            document.body.classList.add('platform-ipad');
+        } else {
+            document.body.classList.add('platform-iphone');
+        }
+    }
 
     if (typeof enabled === "boolean") {
         document.body.classList.toggle(`state-on`, enabled);
