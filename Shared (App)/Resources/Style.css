@@ -491,63 +491,184 @@ body.platform-mac button.platform-ios {
 
 
 /* ============================================
-   macOS Styles (keep existing)
+   macOS Styles
    ============================================ */
 
-.app-icon.platform-mac {
-    height: 100px;
-    margin: 0 0 8px 0;
+.scrollable-content.platform-mac {
     padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-header.platform-mac {
+    background-color: var(--header-bg);
+    padding: 20px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border-radius: 0;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.app-header.platform-mac .app-logo {
+    width: 51px;
+    height: 51px;
     border-radius: 10px;
+    flex-shrink: 0;
 }
 
-.platform-mac {
-    padding: 20px;
+.app-header.platform-mac .app-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-dark);
+    margin: 0 0 2px 0;
+    padding: 0;
 }
 
-.platform-mac p, .platform-mac li {
-    font-size: 1.1em;
+.app-header.platform-mac .app-description {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-dark);
     margin: 0;
     padding: 0;
-    text-align: left;
 }
 
-button.platform-mac.open-preferences {
-    display: block;
-    margin: 20px auto;
-    padding: 8px 16px;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: -apple-system, system-ui, sans-serif;
+.app-header.platform-mac .get-started-badge {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: 2px;
+}
+
+.steps-container.platform-mac {
+    padding: 24px;
+    background-color: var(--white);
+    flex: 1;
+    overflow-y: auto;
+}
+
+.steps-container.platform-mac .step {
+    margin-bottom: 32px;
+}
+
+.steps-container.platform-mac .step-two-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.steps-container.platform-mac .step-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.steps-container.platform-mac .step-columns {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.steps-container.platform-mac .step-content {
+    flex: 0 0 66.67%;
+    min-width: 0;
+}
+
+.steps-container.platform-mac .step-visuals {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 33.33%;
+    min-width: 0;
+}
+
+.steps-container.platform-mac .step-badge {
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.steps-container.platform-mac .step-title {
+    font-size: 17px;
+    font-weight: bold;
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+}
+
+.steps-container.platform-mac .step-instruction {
+    font-size: 14px;
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    line-height: 1.4;
+}
+
+.steps-container.platform-mac .step-image {
+    width: 100%;
+    height: auto;
     border-radius: 6px;
-    border: 1px solid;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+    display: block;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.steps-container.platform-mac .arrow-down {
+    font-size: 15px;
+    color: var(--text-light);
+    line-height: 1;
+}
+
+button.platform-mac.open-safari-btn {
+    width: auto;
+    min-width: 280px;
+    margin: 8px auto 24px auto;
+    padding: 10px 24px;
+    background-color: #0F172A;
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
     cursor: pointer;
+    display: block;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
-@media (prefers-color-scheme: light) {
-    button.platform-mac.open-preferences {
-        background-color: #f3f4f6;
-        border-color: #d1d5db;
-        color: #111827;
-    }
-    button.platform-mac.open-preferences:hover {
-        background-color: #e5e7eb;
-        border-color: #9ca3af;
-    }
+button.platform-mac.open-safari-btn:hover {
+    background-color: #1E293B;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-    button.platform-mac.open-preferences {
-        background-color: #1f2937;
-        border-color: #374151;
-        color: #ffffff;
-    }
-    button.platform-mac.open-preferences:hover {
-        background-color: #374151;
-        border-color: #4b5563;
-    }
+button.platform-mac.open-safari-btn:active {
+    background-color: #0F172A;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    transform: translateY(1px);
+}
+
+button.platform-mac.open-safari-btn:focus {
+    outline: 2px solid #0F172A;
+    outline-offset: 2px;
 }
 
 /* ============================================

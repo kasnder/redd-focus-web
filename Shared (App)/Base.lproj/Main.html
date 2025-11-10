@@ -116,16 +116,70 @@
       </div>
     </div>
 
+  </div>
 
-    <!-- macOS version (keep existing) -->
-    <div class="platform-mac">
-      <img class="app-icon" src="../icon-1024.png" alt='ReDD Focus Icon'>
-      <p>This extension lets you hide distractions on any website, with pre-configured options for YouTube, Facebook, Twitter, Instagram, Linkedin, and Google.com. It's open source and collects zero data - you can find the source code <a href="https://github.com/ulyngs/mindshield-open-source">on GitHub</a>.</p>
-      <p>To turn it on, first toggle it on in Safari Extensions preferences. Then go to a website, click the extension icon in the toolbar, and allow access.</p>
-      <p class="state-on">The 'ReDD Focus' extension is currently on. You can turn it off in Safari Extensions preferences.</p>
-      <p class="state-off">The 'ReDD Focus' extension is currently off. You can turn it on in Safari Extensions preferences.</p>
-      <button class="open-preferences">Quit and Open Safari Extensions Preferences…</button>
+  <!-- macOS version -->
+  <div class="scrollable-content platform-mac">
+    
+    <!-- Header Section -->
+    <header class="app-header platform-mac">
+      <img class="app-logo" src="../icon-512.png" alt="ReDD Focus Icon">
+      <div class="app-header-text">
+        <h1 class="app-title">ReDD Focus</h1>
+        <p class="app-description">Hide distractions on any website</p>
+      </div>
+      <span class="get-started-badge">How-to Guide</span>
+    </header>
+
+    <!-- Steps Container -->
+    <div class="steps-container platform-mac">
+      
+      <!-- Step 1: Turn on extension -->
+      <div class="step step-two-column">
+        <div class="step-header">
+          <div class="step-badge">1</div>
+          <h3 class="step-title">Turn on extension</h3>
+        </div>
+        
+        <div class="step-columns">
+          <div class="step-content">
+            <p class="step-instruction">Open Safari Extensions preferences and enable ReDD Focus.</p>
+          </div>
+          
+          <!-- Visual aids for step 1 -->
+          <div class="step-visuals">
+            <img src="../mac-1-settings.png" alt="Safari Extensions preferences" class="step-image">
+            <div class="arrow-down">↓</div>
+            <img src="../mac-2-check.png" alt="ReDD Focus extension enabled" class="step-image">
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Grant permissions -->
+      <div class="step step-two-column">
+        <div class="step-header">
+          <div class="step-badge">2</div>
+          <h3 class="step-title">Grant permissions</h3>
+        </div>
+        
+        <div class="step-columns">
+          <div class="step-content">
+            <p class="step-instruction">Go to any website, click the ReDD Focus icon in the toolbar, and allow access.</p>
+          </div>
+          
+          <!-- Visual aids for step 2 -->
+          <div class="step-visuals">
+            <img src="../mac-3-warning.png" alt="Extension permission warning" class="step-image">
+            <div class="arrow-down">↓</div>
+            <img src="../mac-4-allow.png" alt="Allow extension access" class="step-image">
+          </div>
+        </div>
+      </div>
+
     </div>
+
+    <!-- Open Safari Extensions Preferences Button -->
+    <button class="open-safari-btn platform-mac open-preferences">Open Safari Extensions Preferences...</button>
 
   </div>
 </body>
