@@ -10,7 +10,7 @@ Source code for the Safari, Chrome, and Firefox extension **ReDD Focus**, availa
 
 **Hide distractions on any website** (e.g., YouTube, Instagram, LinkedIn, Google Search, etc.). Works on any website in any browser, with pre-configured options for popular platforms.
 
-ReDD Focus is **open source**, developed by the [ReDD team](https://redd-project.org), and [backed by research](https://arxiv.org/pdf/2001.04180.pdf).
+ReDD Focus is **open source**, developed by the [Reduce Digital Distraction Project](https://reddfocus.org), and [backed by research](https://arxiv.org/pdf/2001.04180.pdf).
 
 ## Features
 
@@ -25,7 +25,7 @@ ReDD Focus is **open source**, developed by the [ReDD team](https://redd-project
 
 ## Installation
 
-- **[Chrome Web Store](https://chromewebstore.google.com/detail/mindshield/hhblkhfdjijdinijakbmcpkmdfhoadcd?hl=en-GB)**  
+- **[Chrome Web Store](https://chromewebstore.google.com/detail/redd-focus-hide-distracti/hhblkhfdjijdinijakbmcpkmdfhoadcd?hl=en-GB)**
 - **[Firefox Add-ons](https://addons.mozilla.org/en-GB/firefox/addon/reddfocus/)**  
 - **[Apple App Store](https://apps.apple.com/gb/app/mindshield/id1660218371)**  
 
