@@ -21,7 +21,8 @@ ReDD Focus is **open source**, developed by the [Reduce Digital Distraction Proj
 
 ## Demo
 
-[![Watch the video](https://img.youtube.com/vi/SsW5laIOJIw/0.jpg)](https://www.youtube.com/watch?v=SsW5laIOJIw)
+[![Watch the video](https://img.youtube.com/vi/SsW5laIOJIw/0.jpg)](https://www.youtube.com/watch?v=xWbQYYvyUDY)
+
 
 ## Installation
 
