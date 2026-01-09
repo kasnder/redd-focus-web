@@ -158,17 +158,19 @@
             feedbackContainer.style.cursor = 'move';
             feedbackContainer.style.userSelect = 'none';
             feedbackContainer.style.minWidth = '230px';
-            feedbackContainer.style.maxWidth = '320px';
+            feedbackContainer.style.maxWidth = '400px';
             feedbackContainer.style.flexWrap = 'nowrap';
             document.body.appendChild(feedbackContainer);
             // Get initial count if elements are already hidden
             if (currentSiteIdentifier) {
                 const customStorageKey = `${currentSiteIdentifier}CustomHiddenElements`;
-                chrome.storage.sync.get(customStorageKey, function (result) {
+                const rememberKey = `${currentSiteIdentifier}RememberSettings`;
+                chrome.storage.sync.get([customStorageKey, rememberKey], function (result) {
                     let customSelectors = result[customStorageKey] || [];
                     if (!Array.isArray(customSelectors)) customSelectors = [];
+                    const rememberEnabled = result[rememberKey] !== false;
                     const merged = Array.from(new Set([...customSelectors, ...sessionHiddenSelectors]));
-                    updateFeedbackMessage('Click element to hide it', merged.length > 0, merged.length);
+                    updateFeedbackMessage('Click element to hide it', merged.length > 0, merged.length, !rememberEnabled);
                 });
             } else {
                 updateFeedbackMessage('Click element to hide it');
@@ -263,13 +265,16 @@
         });
     }
 
-    function updateFeedbackMessage(message, showUndo = false, count = null) {
+    function updateFeedbackMessage(message, showUndo = false, count = null, sessionOnly = false) {
         if (!feedbackContainer) return;
         feedbackContainer.innerHTML = '';
 
         let displayMessage = message;
         if (count !== null && count > 0) {
             displayMessage = `${count} ${count === 1 ? 'element' : 'elements'} hidden`;
+            if (sessionOnly) {
+                displayMessage += ' (session only)';
+            }
         }
 
         const messageSpan = document.createElement('span');
@@ -280,6 +285,7 @@
         messageSpan.style.minWidth = '100px';
         messageSpan.style.color = '#e4e4e7';
         messageSpan.style.marginRight = showUndo ? '6px' : '4px';
+        messageSpan.style.whiteSpace = 'nowrap';
         feedbackContainer.appendChild(messageSpan);
 
         if (showUndo) {
@@ -327,13 +333,13 @@
                     // Reapply merged (persistent + remaining session)
                     const merged = Array.from(new Set([...customSelectors, ...sessionHiddenSelectors]));
                     applyCustomElementStyles(currentSiteIdentifier, merged);
-                    updateFeedbackMessage('Click element to hide it', merged.length > 0, merged.length);
+                    updateFeedbackMessage('Click element to hide it', merged.length > 0, merged.length, false);
                 });
             } else {
                 // Session-only: just reapply merged without touching storage
                 const merged = Array.from(new Set([...customSelectors, ...sessionHiddenSelectors]));
                 applyCustomElementStyles(currentSiteIdentifier, merged);
-                updateFeedbackMessage('Click element to hide it', merged.length > 0, merged.length);
+                updateFeedbackMessage('Click element to hide it', merged.length > 0, merged.length, true);
                 // Notify popup that session selectors changed
                 chrome.runtime.sendMessage({ type: 'sessionSelectorsChanged', siteIdentifier: currentSiteIdentifier, selectors: merged });
             }
@@ -453,7 +459,7 @@
             const alreadyHas = customSelectors.includes(selector) || sessionHiddenSelectors.includes(selector);
             if (alreadyHas) {
                 const merged = Array.from(new Set([...customSelectors, ...sessionHiddenSelectors]));
-                updateFeedbackMessage('Element already hidden', false, merged.length);
+                updateFeedbackMessage('Element already hidden', false, merged.length, !rememberEnabled);
                 return;
             }
             sessionHiddenSelectors.push(selector);
@@ -467,13 +473,13 @@
                     // Apply merged to ensure immediate effect
                     const merged = Array.from(new Set([...toSave, ...sessionHiddenSelectors]));
                     applyCustomElementStyles(currentSiteIdentifier, merged);
-                    updateFeedbackMessage('Element hidden', true, merged.length);
+                    updateFeedbackMessage('Element hidden', true, merged.length, false);
                 });
             } else {
                 // Session only — apply without saving
                 const merged = Array.from(new Set([...customSelectors, ...sessionHiddenSelectors]));
                 applyCustomElementStyles(currentSiteIdentifier, merged);
-                updateFeedbackMessage('Element hidden (session only)', true, merged.length);
+                updateFeedbackMessage('Element hidden', true, merged.length, true);
                 // Notify popup that session selectors changed
                 chrome.runtime.sendMessage({ type: 'sessionSelectorsChanged', siteIdentifier: currentSiteIdentifier, selectors: merged });
             }
