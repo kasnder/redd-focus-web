@@ -9,5 +9,6 @@ bug fixes and improvements:
 1. Instagram: renamed "instagramSuggestions" as "instagramSuggestedFollows" and fixed functionality
 2. YouTube: hiding "Subscriptions" now hides all subscribed-to channels and all buttons related to the Subscriptions
 3. YouTube: fixed issue where "Explore" section wasn't being hidden
+4. YouTube: removed "Entire right sidebar" as functionality replaced by Cinema mode
 4. element hiding, reappearing, and renaming works fluidly across all states (session-only, saving as default, auto-save ON)
 
