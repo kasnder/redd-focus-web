@@ -666,6 +666,23 @@
                 sendResponse({ overrides: sessionOverrides, customSelectors: mergedSelectors });
             });
             return true; // async response
+        } else if (message.type === 'removeSessionSelector') {
+            // Remove a specific selector from session memory
+            const selectorToRemove = message.selector;
+            const index = sessionHiddenSelectors.indexOf(selectorToRemove);
+            if (index > -1) {
+                sessionHiddenSelectors.splice(index, 1);
+            }
+            // Reapply styles with updated selectors
+            const customKey = `${currentSiteIdentifier}CustomHiddenElements`;
+            chrome.storage.sync.get(customKey, function (result) {
+                let baseSelectors = result[customKey] || [];
+                if (!Array.isArray(baseSelectors)) baseSelectors = [];
+                const mergedSelectors = Array.from(new Set([...baseSelectors, ...sessionHiddenSelectors]));
+                applyCustomElementStyles(currentSiteIdentifier, mergedSelectors);
+                sendResponse({ success: true, customSelectors: mergedSelectors });
+            });
+            return true; // async response
         }
     });
 

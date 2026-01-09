@@ -448,16 +448,32 @@ document.addEventListener('DOMContentLoaded', function () {
                     </svg>`;
                 removeButton.title = 'Remove';
                 removeButton.addEventListener('click', function () {
-                    const storageKey = `${siteIdentifier}CustomHiddenElements`;
-                    chrome.storage.sync.get(storageKey, function (result) {
-                        let currentSelectors = result[storageKey] || [];
-                        currentSelectors = currentSelectors.filter(s =>
-                            (typeof s === 'string' ? s : s.selector) !== selector
-                        );
-                        chrome.storage.sync.set({ [storageKey]: currentSelectors }, function () {
-                            updateCustomElementsList(siteIdentifier, currentSelectors);
+                    if (rememberSettingsEnabled) {
+                        // Auto-save is ON: remove from storage
+                        const storageKey = `${siteIdentifier}CustomHiddenElements`;
+                        chrome.storage.sync.get(storageKey, function (result) {
+                            let currentSelectors = result[storageKey] || [];
+                            currentSelectors = currentSelectors.filter(s =>
+                                (typeof s === 'string' ? s : s.selector) !== selector
+                            );
+                            chrome.storage.sync.set({ [storageKey]: currentSelectors }, function () {
+                                updateCustomElementsList(siteIdentifier, currentSelectors);
+                            });
                         });
-                    });
+                    } else {
+                        // Auto-save is OFF: send message to content script to remove from session
+                        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+                            if (!tabs || !tabs[0]) return;
+                            chrome.tabs.sendMessage(tabs[0].id, {
+                                type: 'removeSessionSelector',
+                                selector: selector
+                            }, function (response) {
+                                if (response && response.customSelectors) {
+                                    updateCustomElementsList(siteIdentifier, response.customSelectors);
+                                }
+                            });
+                        });
+                    }
                 });
 
                 buttonsContainer.appendChild(editButton);
