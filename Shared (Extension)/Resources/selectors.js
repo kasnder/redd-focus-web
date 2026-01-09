@@ -29,6 +29,8 @@ const cssSelectors = {
     youtubeSubscriptionsCssOff: 'ytd-guide-section-renderer:has(a[href="/feed/channels"]), ytd-guide-section-renderer:has(a[href="/feed/subscriptions"]) { display: none !important; } ytm-pivot-bar-renderer[role="tablist"] ytm-pivot-bar-item-renderer:nth-child(3) { display: none !important; }',
     youtubeHistoryCssOn: '#endpoint[href="/feed/history"] { display: flex !important; }',
     youtubeHistoryCssOff: '#endpoint[href="/feed/history"] { display: none !important; }',
+    youtubeYouCssOn: 'ytd-guide-section-renderer:has(a[href="/feed/you"]) { display: block !important; } ytd-mini-guide-entry-renderer:has(a[href="/feed/you"]) { display: flex !important; }',
+    youtubeYouCssOff: 'ytd-guide-section-renderer:has(a[href="/feed/you"]) { display: none !important; } ytd-mini-guide-entry-renderer:has(a[href="/feed/you"]) { display: none !important; }',
     youtubeExploreCssOn: 'ytd-guide-section-renderer:has(a[href^="/feed/storefront"]) { display: block !important; }',
     youtubeExploreCssOff: 'ytd-guide-section-renderer:has(a[href^="/feed/storefront"]) { display: none !important; }',
     youtubeMoreCssOn: '#sections ytd-guide-section-renderer:has(a[href="https://studio.youtube.com/"]) { display: block !important; }',

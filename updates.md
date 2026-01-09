@@ -2,7 +2,8 @@ new features:
 
 1. redesigned custom-selector, button, and progressive feedback on hidden elements
 2. make google ads highlighting colour more red and account for dark mode on browsers
-3. YouTube: thumbnail styling now includes ads and sponsored posts
+3. YouTube: add ability to hide the "You" section in the menu bar
+4. YouTube: thumbnail styling now includes ads and sponsored posts
 
 bug fixes and improvements:
 
