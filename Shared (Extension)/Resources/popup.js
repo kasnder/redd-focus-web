@@ -422,19 +422,37 @@ document.addEventListener('DOMContentLoaded', function () {
                 editButton.title = 'Edit';
                 editButton.addEventListener('click', function () {
                     showEditDialog(siteIdentifier, selector, name, function (newName, newSelector) {
-                        const storageKey = `${siteIdentifier}CustomHiddenElements`;
-                        chrome.storage.sync.get(storageKey, function (result) {
-                            let currentSelectors = result[storageKey] || [];
-                            const index = currentSelectors.findIndex(s =>
-                                (typeof s === 'string' ? s : s.selector) === selector
-                            );
-                            if (index !== -1) {
-                                currentSelectors[index] = { name: newName, selector: newSelector };
-                                chrome.storage.sync.set({ [storageKey]: currentSelectors }, function () {
-                                    updateCustomElementsList(siteIdentifier, currentSelectors);
+                        if (rememberSettingsEnabled) {
+                            // Auto-save is ON: update in storage
+                            const storageKey = `${siteIdentifier}CustomHiddenElements`;
+                            chrome.storage.sync.get(storageKey, function (result) {
+                                let currentSelectors = result[storageKey] || [];
+                                const index = currentSelectors.findIndex(s =>
+                                    (typeof s === 'string' ? s : s.selector) === selector
+                                );
+                                if (index !== -1) {
+                                    currentSelectors[index] = { name: newName, selector: newSelector };
+                                    chrome.storage.sync.set({ [storageKey]: currentSelectors }, function () {
+                                        updateCustomElementsList(siteIdentifier, currentSelectors);
+                                    });
+                                }
+                            });
+                        } else {
+                            // Auto-save is OFF: send message to content script to edit in session
+                            chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+                                if (!tabs || !tabs[0]) return;
+                                chrome.tabs.sendMessage(tabs[0].id, {
+                                    type: 'editSessionSelector',
+                                    oldSelector: selector,
+                                    newSelector: newSelector,
+                                    newName: newName
+                                }, function (response) {
+                                    if (response && response.customSelectors) {
+                                        updateCustomElementsList(siteIdentifier, response.customSelectors);
+                                    }
                                 });
-                            }
-                        });
+                            });
+                        }
                     });
                 });
 
