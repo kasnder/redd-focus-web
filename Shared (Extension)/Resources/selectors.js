@@ -51,14 +51,14 @@ const cssSelectors = {
     // Facebook
     facebookFeedCssOn: '#ssrb_feed_start + div, div.x1hc1fzr.x1unhpq9.x6o7n8i { visibility: visible !important; } #screen-root div > div[data-mcomponent="MContainer"] > div.m.displayed:nth-child(n+6) { display: block !important; }',
     facebookFeedCssOff: '#ssrb_feed_start + div, div.x1hc1fzr.x1unhpq9.x6o7n8i { visibility: hidden !important; } #screen-root div:not([data-adjust-on-keyboard-shown="true"]) > div[data-mcomponent="MContainer"] > div.m.displayed:nth-child(n+7), #screen-root div[data-mcomponent="MContainer"] div[data-mcomponent="MContainer"]:has(div[data-testid^="post-profile"]) { display: none !important; }',
-    facebookWatchCssOn: '',
-    facebookWatchCssOff: 'a[href$="/watch/"], a[aria-label="Video"], div[aria-label*="video" i] { display: none !important; } /* mobile */ div[role="button"]:has(div[data-hidden-ref-key="videos.jewel.hidden"]) {display: none !important;} div.m.displayed:has(div[data-hidden-ref-key="videos.jewel.hidden"]) {background-color: white !important;} ',
+    facebookReelsCssOn: '',
+    facebookReelsCssOff: 'li:has(a[href*="/reel/"]), div[role="listitem"]:has(a[href*="/reel/"]) { display: none !important; }',
     facebookNotificationsCssOn: '',
     facebookNotificationsCssOff: 'div[aria-label*="Notifications"], div[data-hidden-ref-key="notifications.pill.jewel.hidden"], #screen-root div[data-mcomponent="MScreen"] div[data-mcomponent="MContainer"] div[data-mcomponent="MContainer"]:nth-child(2) div[role="button"]:nth-child(5) div[data-mcomponent="MContainer"]:nth-child(3) {visibility: hidden !important;}',
     facebookGroupChatsCssOn: 'div[role="complementary"] div[data-visualcompletion="ignore-dynamic"] > div.x1n2onr6:not([role="cell"]) { visibility: visible !important; }',
     facebookGroupChatsCssOff: 'div[role="complementary"] div[data-visualcompletion="ignore-dynamic"] > div.x1n2onr6:not([role="cell"]) { visibility: hidden !important; }',
     facebookStoriesCssOn: 'div[aria-label="Stories"], #screen-root div[data-mcomponent="MContainer"] > div[data-mcomponent="MContainer"]:has(div[aria-label*="story"]) { display: block !important;}',
-    facebookStoriesCssOff: 'li.html-li.xdj266r.x14z9mp.xat24cr.x1lziwak.xexx8yu.xyri2b.x18d9i69.x1c1uobl:has(a[href*="/reel/"]), div[aria-label="Stories"] { display: none !important; } #screen-root div[data-mcomponent="MContainer"] > div[data-mcomponent="MContainer"]:has(div[aria-label*="story"]) { display: none !important;}',
+    facebookStoriesCssOff: 'div[aria-label="Stories"] { display: none !important; } #screen-root div[data-mcomponent="MContainer"] > div[data-mcomponent="MContainer"]:has(div[aria-label*="story"]) { display: none !important;}',
     facebookSponsoredCssOn: '',
     facebookSponsoredCssOff: 'a[aria-label="Advertiser"] { display: none !important; }',
 
