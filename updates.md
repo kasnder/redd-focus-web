@@ -13,5 +13,6 @@ bug fixes and improvements:
 4. YouTube: removed "Entire right sidebar" as functionality replaced by Cinema mode
 5. Facebook: rename "Chat" to "Group chats" to mirror functionality
 6. Facebook: separate "Stories" and "Reels" into their own toggles and fix functionality
-. element hiding, reappearing, and renaming works fluidly across all states (session-only, saving as default, auto-save ON)
+7. Facebook: fix all mobile functionality
+8. element hiding, reappearing, and renaming works fluidly across all states (session-only, saving as default, auto-save ON)
 
