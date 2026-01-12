@@ -4,6 +4,8 @@ new features:
 2. make google ads highlighting colour more red and account for dark mode on browsers
 3. YouTube: add ability to hide the "You" section in the menu bar
 4. YouTube: thumbnail styling now includes ads and sponsored posts
+5. Facebook: add ability to hide "People you may know" on the feed
+6. Facebook: add ability to hide "Contacts" on right sidebar on desktop
 
 bug fixes and improvements:
 
