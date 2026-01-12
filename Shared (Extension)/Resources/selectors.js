@@ -52,7 +52,7 @@ const cssSelectors = {
     facebookFeedCssOn: '#ssrb_feed_start + div, div.x1hc1fzr.x1unhpq9.x6o7n8i { visibility: visible !important; } #screen-root div > div[data-mcomponent="MContainer"] > div.m.displayed:nth-child(n+6) { display: block !important; }',
     facebookFeedCssOff: '#ssrb_feed_start + div, div.x1hc1fzr.x1unhpq9.x6o7n8i { visibility: hidden !important; } #screen-root div:not([data-adjust-on-keyboard-shown="true"]) > div[data-mcomponent="MContainer"] > div.m.displayed:nth-child(n+7), #screen-root div[data-mcomponent="MContainer"] div[data-mcomponent="MContainer"]:has(div[data-testid^="post-profile"]) { display: none !important; }',
     facebookReelsCssOn: '',
-    facebookReelsCssOff: 'li:has(a[href*="/reel/"]), div[role="listitem"]:has(a[href*="/reel/"]) { display: none !important; }',
+    facebookReelsCssOff: 'li:has(a[href*="/reel/"]), div[role="listitem"]:has(a[href*="/reel/"]), div[role="listitem"]:has([aria-label="Reels"]) { display: none !important; }',
     facebookNotificationsCssOn: '',
     facebookNotificationsCssOff: 'div[aria-label*="Notifications"], div[data-hidden-ref-key="notifications.pill.jewel.hidden"], #screen-root div[data-mcomponent="MScreen"] div[data-mcomponent="MContainer"] div[data-mcomponent="MContainer"]:nth-child(2) div[role="button"]:nth-child(5) div[data-mcomponent="MContainer"]:nth-child(3) {visibility: hidden !important;}',
     facebookGroupChatsCssOn: 'div[role="complementary"] div[data-visualcompletion="ignore-dynamic"] > div.x1n2onr6:not([role="cell"]) { visibility: visible !important; }',
