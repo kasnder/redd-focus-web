@@ -114,8 +114,8 @@ const cssSelectors = {
     // WhatsApp
     whatsappPreviewCssOn: 'div._ak8k { display: block !important; }',
     whatsappPreviewCssOff: 'div._ak8k { display: none !important; }',
-    whatsappProfilePicturesCssOn: 'div.x1n2onr6.x1c9tyrk.xeusxvb.x1pahc9y.x1ertn4p, div.x1n2onr6.x1c9tyrk.xeusxvb.x1pahc9y.x1ertn4p { display: flex !important; }',
-    whatsappProfilePicturesCssOff: 'div.x1n2onr6.x1c9tyrk.xeusxvb.x1pahc9y.x1ertn4p, div.x1n2onr6.x1c9tyrk.xeusxvb.x1pahc9y.x1ertn4p { display: none !important; }',
+    whatsappProfilePicturesCssOn: 'div._ak8n div.x1n2onr6.x1c9tyrk.xeusxvb.x1pahc9y.x1ertn4p, div[title="Profile details"] div.x1n2onr6.x1c9tyrk.xeusxvb.x1pahc9y.x1ertn4p { display: flex !important; }',
+    whatsappProfilePicturesCssOff: 'div._ak8n div.x1n2onr6.x1c9tyrk.xeusxvb.x1pahc9y.x1ertn4p, div[title="Profile details"] div.x1n2onr6.x1c9tyrk.xeusxvb.x1pahc9y.x1ertn4p { display: none !important; }',
     whatsappStatusCssOn: 'div:has(> span > button[aria-label="Status"]) { display: flex !important; }',
     whatsappStatusCssOff: 'div:has(> span > button[aria-label="Status"]) { display: none !important; }',
     whatsappChannelsCssOn: 'div:has(> span > button[aria-label="Channels"]) { display: flex !important; }',

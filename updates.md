@@ -10,6 +10,7 @@ new features:
 8. Instagram: add ability to hide notification badges
 9. X/Twitter: add ability to hide "Explore" section
 10: WhatsApp Web: add ability to hide "Status", "Channels", and "Communities" tabs
+11. WhatsApp Web: add ability to hide chat profile pictures
 
 bug fixes and improvements:
 
