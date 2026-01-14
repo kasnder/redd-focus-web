@@ -21,4 +21,5 @@ bug fixes and improvements:
 7. Facebook: rename "Chat" to "Group chats" to mirror functionality and add "Community chats" to it
 8. Facebook: separate "Stories" and "Reels" into their own toggles and fix functionality
 9. Instagram: "Reels" now hides Reels in feeds ## perhaps look to separate out "Reels in feed" and "Reels tabs" ## can remove if people find this to be too much
-10. 
+10. LinkedIn: feed is now hidden everywhere except when viewing a specific post
+

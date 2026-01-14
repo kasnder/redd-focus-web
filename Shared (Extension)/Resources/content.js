@@ -577,12 +577,26 @@
                                             cssToApply = cssSelectors[item + "Css" + state];
                                             lastAppliedSettings[item] = state;
                                         } else if (item === "linkedinFeed") {
-                                            let isFeedPage = window.location.pathname === '/' || window.location.pathname === '/feed/';
-                                            cssToApply = (statusValue === true && isFeedPage) ? cssSelectors[item + "CssOff"] : cssSelectors[item + "CssOn"];
-                                            lastAppliedSettings[item] = statusValue === true && isFeedPage ? "hidden" : "visible";
-                                        } else {
-                                            cssToApply = (statusValue === true) ? cssSelectors[item + "CssOff"] : cssSelectors[item + "CssOn"];
-                                            lastAppliedSettings[item] = statusValue === true ? "hidden" : "visible";
+                                            let isMainFeed = window.location.pathname === '/' || window.location.pathname === '/feed' || window.location.pathname === '/feed/';
+                                            let isViewingPost = window.location.pathname.includes('/feed/update') || window.location.search.includes('highlightedUpdateUrn');
+
+                                            if (statusValue === true) {
+                                                // User wants feed Hidden
+                                                if (isViewingPost) {
+                                                    cssToApply = cssSelectors[item + "CssFocused"];
+                                                    lastAppliedSettings[item] = "focused";
+                                                } else if (isMainFeed) {
+                                                    cssToApply = cssSelectors[item + "CssOff"];
+                                                    lastAppliedSettings[item] = "hidden";
+                                                } else {
+                                                    cssToApply = cssSelectors[item + "CssOn"];
+                                                    lastAppliedSettings[item] = "visible";
+                                                }
+                                            } else {
+                                                // User wants feed Visible
+                                                cssToApply = cssSelectors[item + "CssOn"];
+                                                lastAppliedSettings[item] = "visible";
+                                            }
                                         }
                                         createStyleElement(styleName, cssToApply);
                                     });
@@ -768,9 +782,25 @@
                                 cssToApply = cssSelectors[item + "Css" + state];
                                 lastAppliedSettings[item] = state;
                             } else if (item === "linkedinFeed") {
-                                let isFeedPage = window.location.pathname === '/' || window.location.pathname === '/feed/';
-                                cssToApply = (statusValue === true && isFeedPage) ? cssSelectors[item + "CssOff"] : cssSelectors[item + "CssOn"];
-                                lastAppliedSettings[item] = statusValue === true && isFeedPage ? "hidden" : "visible";
+                                // 3-state logic: Hidden (Main Feed) / Focused (View Post) / Visible (User ON)
+                                let isMainFeed = window.location.pathname === '/' || window.location.pathname === '/feed' || window.location.pathname === '/feed/';
+                                let isViewingPost = window.location.pathname.includes('/feed/update') || window.location.search.includes('highlightedUpdateUrn');
+
+                                if (statusValue === true) {
+                                    if (isViewingPost) {
+                                        cssToApply = cssSelectors[item + "CssFocused"];
+                                        lastAppliedSettings[item] = "focused";
+                                    } else if (isMainFeed) {
+                                        cssToApply = cssSelectors[item + "CssOff"];
+                                        lastAppliedSettings[item] = "hidden";
+                                    } else {
+                                        cssToApply = cssSelectors[item + "CssOn"];
+                                        lastAppliedSettings[item] = "visible";
+                                    }
+                                } else {
+                                    cssToApply = cssSelectors[item + "CssOn"];
+                                    lastAppliedSettings[item] = "visible";
+                                }
                             } else {
                                 cssToApply = (statusValue === true) ? cssSelectors[item + "CssOff"] : cssSelectors[item + "CssOn"];
                                 lastAppliedSettings[item] = statusValue === true ? "hidden" : "visible";

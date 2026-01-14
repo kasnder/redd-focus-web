@@ -101,8 +101,9 @@ const cssSelectors = {
     instagramNotificationBadgesCssOff: 'div.xmn1u35, div.x14vhib7.x1c9tyrk, div.html-div.x14vhib7 { display: none !important; }',
 
     // LinkedIn
-    linkedinFeedCssOn: '/* needs to be explicitly shown, otherwise not loaded */ div.scaffold-finite-scroll.scaffold-finite-scroll--infinite, div.scaffold-finite-scroll.scaffold-finite-scroll--finite, #feed-container, .feed-container {display: block !important;}',
-    linkedinFeedCssOff: 'div.scaffold-finite-scroll.scaffold-finite-scroll--infinite, div.scaffold-finite-scroll.scaffold-finite-scroll--finite, #feed-container, .feed-container {display: none !important;}',
+    linkedinFeedCssOn: '/* needs to be explicitly shown, otherwise not loaded */ div.scaffold-finite-scroll.scaffold-finite-scroll--infinite, div.scaffold-finite-scroll.scaffold-finite-scroll--finite, #feed-container, .feed-container, section.feeds, li.feed-item, article.main-feed-activity-card {display: block !important;}',
+    linkedinFeedCssOff: 'div.scaffold-finite-scroll.scaffold-finite-scroll--infinite, div.scaffold-finite-scroll.scaffold-finite-scroll--finite, #feed-container, .feed-container, section.feeds, li.feed-item, article.main-feed-activity-card {display: none !important;}',
+    linkedinFeedCssFocused: 'div.scaffold-finite-scroll__content > *:nth-child(n+2) { display: none !important; }',
     linkedinNotificationsCssOn: '',
     linkedinNotificationsCssOff: 'span.notification-badge--show, #nav-notifications-small-badge, #nav-people-small-badge, span[data-badge-source="notificationsCount"] { display: none !important; }',
     linkedinNewsCssOn: '#feed-news-module, .feed-follows-module { display: block !important; }',
