@@ -73,8 +73,9 @@ const cssSelectors = {
     xNotificationsCssOff: 'nav[role="navigation"] a[href="/notifications"] { display: none !important; }',
     xTrendsCssOn: 'div[data-testid="sidebarColumn"] section[role="region"], div[role="presentation"]:has(a[href="/explore/tabs/trending"]) {display: flex !important;}',
     xTrendsCssOff: 'div[data-testid="sidebarColumn"] section[role="region"], div[role="presentation"]:has(a[href="/explore/tabs/trending"]) {display: none !important; }',
-    xFollowCssOn: 'div[data-testid="sidebarColumn"] div.css-175oi2r.r-1bro5k0:has(aside[role="complementary"]) { display: flex !important;}',
-    xFollowCssOff: 'div[data-testid="sidebarColumn"] div.css-175oi2r.r-1bro5k0:has(aside[role="complementary"]) { display: none !important;}',
+    xFollowCssOn: 'div[data-testid="sidebarColumn"] div.css-175oi2r.r-1bro5k0:has(aside[role="complementary"]), div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"]), div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"]) { display: flex !important;}',
+    xFollowCssOff: 'div[data-testid="sidebarColumn"] div.css-175oi2r.r-1bro5k0:has(aside[role="complementary"]), div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"]), div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"]) { display: none !important;}',
+    // div[data-testid="cellInnerDiv"]:has(.r-1wtj0ep.r-1mmae3n.r-3pj75a.r-1ny4l3l) can add this to hide the "Who to follow" header in for you section but also hides other headers as no specific selectors
     xTimelineCssOn: 'div[data-testid="primaryColumn"] section[role="region"] {visibility: visible !important; }',
     xTimelineCssOff: 'div[data-testid="primaryColumn"] section[role="region"] {visibility: hidden !important; }',
 
