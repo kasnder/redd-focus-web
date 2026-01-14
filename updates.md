@@ -8,6 +8,7 @@ new features:
 6. Facebook: add ability to hide "Contacts" on right sidebar on desktop
 7. Instagram: add ability to hide suggested posts
 8. Instagram: add ability to hide notification badges
+9. X/Twitter: add ability to hide "Explore" section
 
 bug fixes and improvements:
 
@@ -19,5 +20,5 @@ bug fixes and improvements:
 6. YouTube: removed "Entire right sidebar" as functionality replaced by Cinema mode
 7. Facebook: rename "Chat" to "Group chats" to mirror functionality and add "Community chats" to it
 8. Facebook: separate "Stories" and "Reels" into their own toggles and fix functionality
-9. Instagram: "Reels" now hides Reels in feeds ## perhaps look to separate out "Reels in feed" and "Reels tabs" if people find this to be too much
-
+9. Instagram: "Reels" now hides Reels in feeds ## perhaps look to separate out "Reels in feed" and "Reels tabs" ## can remove if people find this to be too much
+10. 
