@@ -9,6 +9,7 @@ new features:
 7. Instagram: add ability to hide suggested posts
 8. Instagram: add ability to hide notification badges
 9. X/Twitter: add ability to hide "Explore" section
+10: WhatsApp Web: add ability to hide "Status", "Channels", and "Communities" tabs
 
 bug fixes and improvements:
 
