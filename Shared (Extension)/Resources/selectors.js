@@ -114,14 +114,16 @@ const cssSelectors = {
     // WhatsApp
     whatsappPreviewCssOn: 'div._ak8k { display: block !important; }',
     whatsappPreviewCssOff: 'div._ak8k { display: none !important; }',
-    whatsappNotificationPromptCssOn: 'span.x78zum5.x1c4vz4f.x2lah0s.xdl72j9.xdt5ytf { display: block !important; }',
-    whatsappNotificationPromptCssOff: 'span.x78zum5.x1c4vz4f.x2lah0s.xdl72j9.xdt5ytf { display: none !important; }',
+    whatsappProfilePicturesCssOn: 'div.x1n2onr6.x1c9tyrk.xeusxvb.x1pahc9y.x1ertn4p, div.x1n2onr6.x1c9tyrk.xeusxvb.x1pahc9y.x1ertn4p { display: flex !important; }',
+    whatsappProfilePicturesCssOff: 'div.x1n2onr6.x1c9tyrk.xeusxvb.x1pahc9y.x1ertn4p, div.x1n2onr6.x1c9tyrk.xeusxvb.x1pahc9y.x1ertn4p { display: none !important; }',
     whatsappStatusCssOn: 'div:has(> span > button[aria-label="Status"]) { display: flex !important; }',
     whatsappStatusCssOff: 'div:has(> span > button[aria-label="Status"]) { display: none !important; }',
     whatsappChannelsCssOn: 'div:has(> span > button[aria-label="Channels"]) { display: flex !important; }',
     whatsappChannelsCssOff: 'div:has(> span > button[aria-label="Channels"]) { display: none !important; }',
     whatsappCommunitiesCssOn: 'div:has(> span > button[aria-label="Communities"]) { display: flex !important; }',
     whatsappCommunitiesCssOff: 'div:has(> span > button[aria-label="Communities"]) { display: none !important; }',
+    whatsappNotificationPromptCssOn: 'span.x78zum5.x1c4vz4f.x2lah0s.xdl72j9.xdt5ytf { display: block !important; }',
+    whatsappNotificationPromptCssOff: 'span.x78zum5.x1c4vz4f.x2lah0s.xdl72j9.xdt5ytf { display: none !important; }',
 
     // Google
     googleBackgroundCssOn: '#tads, #atvcap .ptJHdc.yY236b.c3mZkd, #tads .CnP9N.U3A9Ac.irmCpc,.commercial-unit-mobile-top,.commercial-unit-mobile-top .v7hl4d,.commercial-unit-mobile-bottom .v7hl4d, .baPFxb.kSMK2.wHYlTd:has(g-tray-header), .baPFxb.kSMK2.wHYlTd:has(g-tray-header) g-card {background-color: transparent !important;}',
