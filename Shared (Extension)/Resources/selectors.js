@@ -112,10 +112,10 @@ const cssSelectors = {
     linkedinAdsCssOff: 'section.ad-banner-container { display: none !important;}',
 
     // WhatsApp
-    whatsappPreviewCssOn: 'div[data-testid="cell-frame-secondary"] { display: block !important; }',
-    whatsappPreviewCssOff: 'div[data-testid="cell-frame-secondary"] { display: none !important; }',
-    whatsappNotificationPromptCssOn: 'span[data-testid="chat-butterbar"] { display: block !important; }',
-    whatsappNotificationPromptCssOff: 'span[data-testid="chat-butterbar"] { display: none !important; }',
+    whatsappPreviewCssOn: 'div._ak8k { display: block !important; }',
+    whatsappPreviewCssOff: 'div._ak8k { display: none !important; }',
+    whatsappNotificationPromptCssOn: 'span.x78zum5.x1c4vz4f.x2lah0s.xdl72j9.xdt5ytf { display: block !important; }',
+    whatsappNotificationPromptCssOff: 'span.x78zum5.x1c4vz4f.x2lah0s.xdl72j9.xdt5ytf { display: none !important; }',
 
     // Google
     googleBackgroundCssOn: '#tads, #atvcap .ptJHdc.yY236b.c3mZkd, #tads .CnP9N.U3A9Ac.irmCpc,.commercial-unit-mobile-top,.commercial-unit-mobile-top .v7hl4d,.commercial-unit-mobile-bottom .v7hl4d, .baPFxb.kSMK2.wHYlTd:has(g-tray-header), .baPFxb.kSMK2.wHYlTd:has(g-tray-header) g-card {background-color: transparent !important;}',
