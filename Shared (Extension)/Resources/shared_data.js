@@ -40,7 +40,7 @@ const elementsThatCanBeHidden = [
     // Instagram
     "instagramFeed", "instagramSearchFeed", "instagramStories", "instagramMutedStories", "instagramExplore", "instagramReels", "instagramSuggestedFollows", "instagramComments", "instagramNotificationBadges",
     // WhatsApp
-    "whatsappPreview", "whatsappNotificationPrompt",
+    "whatsappPreview", "whatsappNotificationPrompt", "whatsappStatus",
     // Google
     "googleBackground", "googleAIOverview",
     // Reddit
