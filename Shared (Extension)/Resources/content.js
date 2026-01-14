@@ -597,6 +597,9 @@
                                                 cssToApply = cssSelectors[item + "CssOn"];
                                                 lastAppliedSettings[item] = "visible";
                                             }
+                                        } else {
+                                            cssToApply = (statusValue === true) ? cssSelectors[item + "CssOff"] : cssSelectors[item + "CssOn"];
+                                            lastAppliedSettings[item] = statusValue === true ? "hidden" : "visible";
                                         }
                                         createStyleElement(styleName, cssToApply);
                                     });
