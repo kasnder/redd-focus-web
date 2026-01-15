@@ -12,6 +12,7 @@ new features:
 10. WhatsApp Web: add ability to hide "Status", "Channels", and "Communities" tabs
 11. WhatsApp Web: add ability to hide chat profile pictures
 12. Reddit: add ability to hide left and right sidebars on desktop 
+13. Reddit: add ability to hide AI Related Answers/Posts sections on mobile
 
 bug fixes and improvements:
 
