@@ -44,5 +44,5 @@ const elementsThatCanBeHidden = [
     // Google
     "googleBackground", "googleAIOverview",
     // Reddit
-    "redditFeed", "redditPopular", "redditAll", "redditRecent", "redditCommunities", "redditNotification", "redditChat", "redditTrending", "redditBestOf"
+    "redditFeed", "redditLeftSidebar", "redditPopular", "redditAll", "redditRecent", "redditCommunities", "redditNotification", "redditChat", "redditTrending", "redditBestOf", "redditRightSidebar"
 ];
