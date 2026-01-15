@@ -5,6 +5,7 @@
     const shadowSelectors = {
         "redditPopular": "left-nav-top-section",
         "redditAll": "left-nav-top-section",
+        "redditChat": "left-nav-top-section",
     };
 
     function createStyleElement(some_style_id, some_css) {
