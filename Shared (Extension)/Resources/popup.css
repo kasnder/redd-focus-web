@@ -1,5 +1,153 @@
+/* ========================================
+   Theme Variables - Light Mode (default)
+   ======================================== */
 :root {
-    color-scheme: light dark;
+    color-scheme: light;
+
+    /* Background colors */
+    --bg-primary: #F5F5F5;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f1f1f1;
+    --bg-hover: #ddd;
+    --bg-input: #ffffff;
+
+    /* Text colors */
+    --text-primary: #333333;
+    --text-secondary: rgb(69, 69, 69);
+    --text-muted: gray;
+    --text-subtle: darkgray;
+    --text-link: rgb(69, 69, 69);
+    --text-link-hover: #333333;
+
+    /* Border colors */
+    --border-color: #e4e4e7;
+    --border-hover: #d4d4d8;
+    --border-input: #e4e4e7;
+    --border-focus: #3b82f6;
+
+    /* Accent colors */
+    --accent-primary: #2196F3;
+    --accent-hover: #1976D2;
+    --accent-secondary: #3498DB;
+
+    /* Button colors */
+    --btn-primary-bg: #1a1a1a;
+    --btn-primary-text: #ffffff;
+    --btn-primary-hover: #2d2d2d;
+    --btn-secondary-bg: rgb(228, 228, 231);
+    --btn-secondary-text: rgb(24, 24, 27);
+    --btn-secondary-hover: rgb(232, 232, 234);
+
+    /* Toggle/Checkbox colors */
+    --toggle-bg: #ccc;
+    --toggle-bg-checked: #2196F3;
+    --checkbox-bg: #FFF;
+    --checkbox-border: #aaa;
+    --checkbox-check-color: #CB22ED;
+
+    /* Footer */
+    --footer-bg: #F5F5F5;
+    --footer-text: #9b9fa7;
+    --footer-border: rgb(207, 206, 206);
+
+    /* Modal/Dialog */
+    --modal-bg: white;
+    --modal-overlay: rgba(0, 0, 0, 0.4);
+    --modal-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    /* Icon colors */
+    --icon-color: #71717a;
+    --icon-hover: #333;
+
+    /* Misc */
+    --dropdown-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    --message-bg: white;
+}
+
+/* ========================================
+   Theme Variables - Dark Mode
+   ======================================== */
+.dark-mode {
+    color-scheme: dark;
+    /* Background colors */
+    --bg-primary: #1e293b;
+    --bg-secondary: #1e293b;
+    /* Slightly darker for depth */
+    --bg-tertiary: #334155;
+    --bg-hover: #475569;
+    --bg-input: #0f172a;
+
+    /* Text colors */
+    --text-primary: #e2e8f0;
+    --text-secondary: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-subtle: #64748b;
+    --text-link: #94a3b8;
+    --text-link-hover: #e2e8f0;
+
+    /* Border colors */
+    --border-color: #334155;
+    --border-hover: #475569;
+    --border-input: #334155;
+    --border-focus: #818cf8;
+
+    /* Accent colors */
+    --accent-primary: #818cf8;
+    --accent-hover: #6366f1;
+    --accent-secondary: #60a5fa;
+
+    /* Button colors */
+    --btn-primary-bg: #818cf8;
+    --btn-primary-text: #0f172a;
+    --btn-primary-hover: #6366f1;
+    --btn-secondary-bg: #334155;
+    --btn-secondary-text: #fafafa;
+    --btn-secondary-hover: #475569;
+
+    /* Toggle/Checkbox colors */
+    --toggle-bg: #475569;
+    --toggle-bg-checked: #818cf8;
+    --checkbox-bg: #0f172a;
+    --checkbox-border: #475569;
+    --checkbox-check-color: #a78bfa;
+
+    /* Footer */
+    --footer-bg: #1e293b;
+    --footer-text: #94a3b8;
+    --footer-border: #334155;
+
+    /* Modal/Dialog */
+    --modal-bg: #1e293b;
+    --modal-overlay: rgba(0, 0, 0, 0.7);
+    --modal-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+    /* Icon colors */
+    --icon-color: #94a3b8;
+    --icon-hover: #e2e8f0;
+
+    /* Misc */
+    --dropdown-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
+    --message-bg: #1e293b;
+}
+
+/* Contrast adjustment for settings button in dark mode */
+.dark-mode #help-icon-btn {
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-color);
+}
+
+.dark-mode #help-icon-btn:hover {
+    background-color: var(--bg-hover);
+}
+
+.dark-mode #help-icon-btn svg {
+    stroke: var(--text-secondary);
+}
+
+html {
+    background-color: var(--bg-primary);
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -7,13 +155,15 @@ body {
     max-width: 400px;
     min-width: 300px;
     min-height: 150px;
+    margin: 0;
     padding: 0.5rem 1rem 3rem 1rem;
     font-family: system-ui;
     text-align: center;
-    background-color: #F5F5F5;
-    color: #333333;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     overflow-x: hidden;
     box-sizing: border-box;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 body.modal-open {
@@ -59,11 +209,15 @@ body.modal-open {
 }
 
 a:visited {
-    color: rgb(69, 69, 69);
+    color: var(--text-link);
 }
 
 a {
-    color: rgb(69, 69, 69);
+    color: var(--text-link);
+}
+
+a:hover {
+    color: var(--text-link-hover);
 }
 
 .github-link {
@@ -73,8 +227,8 @@ a {
 
 /* for hoverable dropdown */
 .dropbtn {
-    background-color: white;
-    color: black;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
     padding: 4px;
     font-size: 0.9em;
     border: none;
@@ -82,18 +236,18 @@ a {
 }
 
 .dropdown .dropbtn:hover {
-    background-color: #008CBA;
-    color: white;
+    background-color: var(--accent-hover);
+    color: var(--btn-primary-text);
 }
 
 .dropbtn:disabled {
-    background-color: #ccc;
-    color: #888;
+    background-color: var(--bg-tertiary);
+    color: var(--text-subtle);
 }
 
 .dropbtn:disabled:hover {
-    background-color: #ccc;
-    color: #888;
+    background-color: var(--bg-tertiary);
+    color: var(--text-subtle);
 }
 
 .dropdown {
@@ -105,8 +259,8 @@ a {
 .dropdown .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background-color: var(--bg-tertiary);
+    box-shadow: var(--dropdown-shadow);
     z-index: 1;
     padding: 12px 10px 5px 14px;
     width: 100%;
@@ -118,11 +272,11 @@ a {
 }
 
 .dropdown-content .a-toggle:hover {
-    background-color: #ddd;
+    background-color: var(--bg-hover);
 }
 
 .colored-font {
-    color: darkgray;
+    color: var(--text-subtle);
 }
 
 .shown {
@@ -155,7 +309,7 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: var(--toggle-bg);
     -webkit-transition: .1s;
     transition: .1s;
 }
@@ -167,17 +321,17 @@ a {
     width: 14px;
     left: 2px;
     bottom: 2px;
-    background-color: white;
+    background-color: var(--bg-secondary);
     -webkit-transition: .1s;
     transition: .1s;
 }
 
 input:checked+.slider {
-    background-color: #2196F3;
+    background-color: var(--toggle-bg-checked);
 }
 
 input:focus+.slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px var(--toggle-bg-checked);
 }
 
 input:checked+.slider:before {
@@ -195,9 +349,9 @@ input:checked+.slider:before {
     top: -4px;
     left: 0px;
     margin-right: 2px;
-    border: 1px solid rgb(192, 192, 192);
+    border: 1px solid var(--checkbox-border);
     padding: 0;
-    background-color: color(srgb 0.9999 1 1);
+    background-color: var(--checkbox-bg);
     border-radius: 3px;
 }
 
@@ -223,7 +377,7 @@ input:checked+.slider:before {
     top: -1px;
     left: 0px;
     font-size: 16px;
-    color: dimgray;
+    color: var(--text-muted);
 }
 
 .multi-state-checkbox[data-state="Black"]::after {
@@ -238,7 +392,8 @@ input:checked+.slider:before {
 
 /* Add this to popup.css to apply the loading animation to multi-state buttons */
 .multi-state-checkbox.loading::after {
-    content: '\21BB'; /* Unicode for clockwise arrow circle (loading spinner) */
+    content: '\21BB';
+    /* Unicode for clockwise arrow circle (loading spinner) */
     font-size: 12px;
     position: absolute;
     top: 2px;
@@ -268,9 +423,9 @@ input:checked+.slider:before {
 }
 
 #saveButton {
-    background-color: #3498DB;
+    background-color: var(--btn-primary-bg);
     border: none;
-    color: white;
+    color: var(--btn-primary-text);
     padding: 7px;
     text-align: center;
     text-decoration: none;
@@ -279,21 +434,57 @@ input:checked+.slider:before {
     border-radius: 2px;
 }
 
+#saveButton:hover {
+    background-color: var(--btn-primary-hover);
+}
+
 /* Style for Add more elements button */
 button[id$="AddElementButton"] {
-    background-color: #3498DB;
+    background-color: var(--btn-secondary-bg);
     border: none;
-    color: white;
+    color: var(--btn-secondary-text);
     padding: 7px;
     text-align: center;
     font-size: 0.8em;
     font-weight: bold;
-    border-radius: 2px;
+    border-radius: 6px;
+    /* Consistency with help-icon-btn */
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 button[id$="AddElementButton"]:hover {
-    background-color: #2980B9;
+    background-color: var(--btn-secondary-hover);
+}
+
+/* Active/Selection Mode state */
+button[id$="AddElementButton"].active {
+    background-color: var(--accent-primary);
+    color: #ffffff;
+}
+
+button[id$="AddElementButton"].active:hover {
+    background-color: var(--accent-hover);
+}
+
+.dark-mode button[id$="AddElementButton"] {
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.dark-mode button[id$="AddElementButton"]:hover {
+    background-color: var(--bg-hover);
+}
+
+.dark-mode button[id$="AddElementButton"].active {
+    background-color: var(--accent-primary);
+    color: var(--btn-primary-text);
+    border-color: var(--accent-primary);
+}
+
+.dark-mode button[id$="AddElementButton"].active:hover {
+    background-color: var(--accent-hover);
 }
 
 /****** Checkboxes ******/
@@ -321,8 +512,8 @@ button[id$="AddElementButton"]:hover {
     top: 0;
     width: 15px;
     height: 15px;
-    border: 1px solid #aaa;
-    background: #FFF;
+    border: 1px solid var(--checkbox-border);
+    background: var(--checkbox-bg);
     border-radius: .2em;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, .1), 0 0 0 rgba(203, 34, 237, .2);
     -webkit-transition: all .275s;
@@ -336,14 +527,15 @@ button[id$="AddElementButton"]:hover {
     top: 9px;
     left: 0px;
     font-size: 12px;
-    color: #CB22ED;
+    color: var(--checkbox-check-color);
     line-height: 0;
     -webkit-transition: all .9s;
     transition: all .9s;
 }
 
 .hide-checkboxes [type="checkbox"].loading+label:before {
-    content: '\21BB'; /* Unicode for clockwise arrow circle (loading spinner) */
+    content: '\21BB';
+    /* Unicode for clockwise arrow circle (loading spinner) */
     font-size: 12px;
     display: flex;
     align-items: center;
@@ -407,7 +599,7 @@ button[id$="AddElementButton"]:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: white;
+    background-color: var(--message-bg);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -422,20 +614,19 @@ button[id$="AddElementButton"]:hover {
 .friction-customisation {
     font-size: 0.9em;
     font-style: italic;
-    color: gray;
+    color: var(--text-muted);
 }
 
 .friction-customisation input {
     margin-bottom: 5px;
 }
 
-/* shadcn-like input styling */
 .shadcn-input {
     appearance: none;
     -webkit-appearance: none;
-    background-color: #ffffff;
-    color: #18181b;
-    border: 1px solid #e4e4e7; /* hsl(240 5.9% 90%) */
+    background-color: var(--bg-input);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-input);
     border-radius: 6px;
     padding: 4px 8px;
     font-size: 0.95rem;
@@ -445,31 +636,33 @@ button[id$="AddElementButton"]:hover {
 }
 
 .shadcn-input::placeholder {
-    color: #a1a1aa; /* zinc-400 */
+    color: var(--text-muted);
 }
 
 .shadcn-input:hover {
-    border-color: #d4d4d8; /* zinc-300 */
+    border-color: var(--border-hover);
 }
 
 .shadcn-input:focus {
-    border-color: #3b82f6; /* blue-500 */
+    border-color: var(--border-focus);
     box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.35);
 }
 
-@media (prefers-color-scheme: dark) {
-    .shadcn-input {
-        background-color: #18181b;
-        color: #fafafa;
-        border-color: #3f3f46; /* zinc-700 */
-    }
-    .shadcn-input:hover {
-        border-color: #52525b; /* zinc-600 */
-    }
-    .shadcn-input:focus {
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.45);
-    }
+body.dark-mode .shadcn-input:focus {
+    box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.35);
+}
+
+/* Select dropdown styling */
+select.shadcn-input {
+    cursor: pointer;
+    padding-right: 28px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+}
+
+body.dark-mode select.shadcn-input {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 }
 
 .a-toggle.friction-toggle {
@@ -491,7 +684,7 @@ button[id$="AddElementButton"]:hover {
 }
 
 .delay-time-wrapper {
-    color: gray;
+    color: var(--text-muted);
     font-size: 1.5em;
     margin: 0;
 }
@@ -544,7 +737,7 @@ button[id$="AddElementButton"]:hover {
     font-style: italic;
     font-size: 0.9em;
     vertical-align: text-bottom;
-    color: gray;
+    color: var(--text-muted);
 }
 
 #sites-arrow {
@@ -567,21 +760,23 @@ footer {
     font-style: italic;
     padding: 10px 0;
     font-size: 0.8em;
-    border-top: 1px solid rgb(207, 206, 206);
+    border-top: 1px solid var(--footer-border);
     width: 100%;
-    background-color: #F5F5F5;
-    color: #9b9fa7;
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 footer a,
 footer a:visited {
-    color: #9b9fa7;
+    color: var(--footer-text);
     text-decoration: underline;
 }
+
 footer a:hover,
 footer a:visited:hover {
     text-decoration: none;
-    color: #babdc3;
+    color: var(--text-link-hover);
 }
 
 .footer-settings {
@@ -619,73 +814,64 @@ footer .toggle-group {
     margin-top: 2px;
 }
 
-@media (prefers-color-scheme: dark) {
+/* Dark Mode specific overrides (controlled by body.dark-mode class) */
+body.dark-mode .colored-font {
+    color: var(--text-subtle);
+}
 
-    /* Dark Mode styles go here. */
-    .colored-font {
-        color: lightgray;
-    }
+body.dark-mode .friction-customisation input {
+    background-color: var(--bg-input);
+    color: var(--text-secondary);
+}
 
-    .friction-customisation input {
-        background-color: white;
-        color: black;
-    }
+body.dark-mode #sites-arrow path {
+    fill: var(--icon-color);
+}
 
-    a,
-    a:visited {
-        color: gray;
-    }
+body.dark-mode #sites-arrow-right path,
+body.dark-mode #sites-arrow-down path,
+body.dark-mode #how-to-arrow-right path,
+body.dark-mode #how-to-arrow-down path {
+    fill: var(--icon-color);
+}
 
-    #sites-arrow path {
-        fill: rgb(194, 194, 194);
-    }
+body.dark-mode button[id$="AddElementButton"] {
+    background-color: var(--btn-secondary-bg);
+    color: var(--btn-secondary-text);
+}
 
-    #sites-arrow-right path,
-    #sites-arrow-down path,
-    #how-to-arrow-right path,
-    #how-to-arrow-down path {
-        fill: rgb(194, 194, 194);
-    }
+body.dark-mode button[id$="AddElementButton"]:hover {
+    background-color: var(--btn-secondary-hover);
+}
 
-    button[id$="AddElementButton"] {
-        background-color: #3498DB;
-        color: white;
-    }
+body.dark-mode #faq-dropdown {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+}
 
-    button[id$="AddElementButton"]:hover {
-        background-color: #2980B9;
-    }
+body.dark-mode #faq-dropdown h3 {
+    color: var(--text-muted);
+}
 
-    #faq-dropdown {
-        background-color: #09090b;
-        border-color: #27272a;
-        color: #fafafa;
-    }
+body.dark-mode .faq-item {
+    border-bottom-color: var(--border-color);
+}
 
-    #faq-dropdown h3 {
-        color: #a1a1aa;
-    }
+body.dark-mode .faq-trigger {
+    color: var(--text-secondary);
+}
 
-    .faq-item {
-        border-bottom-color: #27272a;
-    }
+body.dark-mode .faq-trigger:hover {
+    background-color: var(--bg-tertiary);
+}
 
-    .faq-trigger {
-        color: #fafafa;
-    }
+body.dark-mode .faq-chevron {
+    stroke: var(--icon-color);
+}
 
-    .faq-trigger:hover {
-        background-color: #27272a;
-    }
-
-    .faq-chevron {
-        stroke: #a1a1aa;
-    }
-
-    .faq-content p {
-        color: #a1a1aa;
-    }
-
+body.dark-mode .faq-content p {
+    color: var(--text-muted);
 }
 
 p.previews-text {
@@ -749,7 +935,7 @@ p.how-to-description {
         margin: 20px 20px 30px 20px;
         width: 25% !important;
     }
-    
+
     .delay-time-wrapper {
         margin-top: 10px;
     }
@@ -814,28 +1000,17 @@ button[id$="AddElementButton"],
 
 /* Success state for save button */
 #saveButton.is-success {
-    background-color: #16a34a; /* green-600 */
+    background-color: #16a34a;
+    /* green-600 */
     color: #ffffff;
 }
 
 #saveButton.is-success:hover {
-    background-color: #15803d; /* green-700 */
+    background-color: #15803d;
+    /* green-700 */
 }
 
-button[id$="AddElementButton"] {
-    background-color: rgb(228, 228, 231);
-    color: rgb(24, 24, 27);
-}
-
-button[id$="AddElementButton"]:hover:not(.active) {
-    background-color: rgb(232, 232, 234);
-}
-
-button[id$="AddElementButton"].active {
-    background-color: #ffffff;
-    /* White when active */
-    color: #000000;
-}
+/****** Checkboxes Styling (Legacy removed) ******/
 
 
 /* Style for refresh button */
@@ -847,13 +1022,14 @@ button[id$="AddElementButton"].active {
 #whatsappRefreshCustomElements,
 #googleRefreshCustomElements,
 #redditRefreshCustomElements {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     padding: 5px 10px;
     cursor: pointer;
     font-size: 12px;
     margin-top: 5px;
+    color: var(--text-primary);
 }
 
 #youtubeRefreshCustomElements:hover,
@@ -864,7 +1040,7 @@ button[id$="AddElementButton"].active {
 #whatsappRefreshCustomElements:hover,
 #googleRefreshCustomElements:hover,
 #redditRefreshCustomElements:hover {
-    background-color: #e0e0e0;
+    background-color: var(--bg-hover);
 }
 
 
@@ -887,12 +1063,12 @@ button[id$="AddElementButton"].active {
 }
 
 .refresh-symbol svg {
-    fill: #666;
+    fill: var(--icon-color);
     transition: fill 0.2s;
 }
 
 .refresh-symbol:hover svg {
-    fill: #333;
+    fill: var(--icon-hover);
 }
 
 /****** Custom Elements ******/
@@ -926,7 +1102,9 @@ button[id$="AddElementButton"].active {
 .selector-input {
     flex-grow: 1;
     padding: 4px 8px;
-    border: 1px solid #d4d4d8;
+    border: 1px solid var(--border-input);
+    background-color: var(--bg-input);
+    color: var(--text-primary);
     border-radius: 4px;
     font-size: 0.9em;
     font-family: monospace;
@@ -935,18 +1113,17 @@ button[id$="AddElementButton"].active {
 }
 
 .selector-input:focus {
-    border-color: #3b82f6;
+    border-color: var(--border-focus);
     box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
 }
 
-/* Edit Dialog Styles */
 .edit-dialog-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--modal-overlay);
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -956,12 +1133,12 @@ button[id$="AddElementButton"].active {
 }
 
 .edit-dialog {
-    background: white;
+    background: var(--modal-bg);
     border-radius: 8px;
     padding: 20px;
     max-width: 90%;
     width: 360px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--modal-shadow);
     text-align: left;
 }
 
@@ -969,7 +1146,7 @@ button[id$="AddElementButton"].active {
     margin: 0 0 16px 0;
     font-size: 16px;
     font-weight: 600;
-    color: #1a1a1a;
+    color: var(--text-secondary);
 }
 
 .edit-dialog-field {
@@ -981,14 +1158,14 @@ button[id$="AddElementButton"].active {
     margin-bottom: 6px;
     font-size: 13px;
     font-weight: 500;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .edit-dialog-field label .help-icon {
     display: inline-flex;
     align-items: center;
     margin-left: 4px;
-    color: #71717a;
+    color: var(--icon-color);
     text-decoration: none;
     vertical-align: text-bottom;
     position: relative;
@@ -997,7 +1174,7 @@ button[id$="AddElementButton"].active {
 }
 
 .edit-dialog-field label .help-icon:hover {
-    color: #0F172A;
+    color: var(--text-secondary);
 }
 
 .edit-dialog-field label .help-icon svg {
@@ -1008,11 +1185,13 @@ button[id$="AddElementButton"].active {
 .edit-dialog-field textarea {
     width: 100%;
     padding: 8px 10px;
-    border: 1px solid #e4e4e7;
+    border: 1px solid var(--border-input);
     border-radius: 6px;
     font-size: 14px;
     box-sizing: border-box;
     font-family: system-ui;
+    background-color: var(--bg-input);
+    color: var(--text-primary);
 }
 
 .edit-dialog-field textarea {
@@ -1024,7 +1203,7 @@ button[id$="AddElementButton"].active {
 .edit-dialog-field input:focus,
 .edit-dialog-field textarea:focus {
     outline: none;
-    border-color: #0F172A;
+    border-color: var(--border-focus);
 }
 
 .edit-dialog-buttons {
@@ -1034,7 +1213,8 @@ button[id$="AddElementButton"].active {
     margin-top: 16px;
 }
 
-.primary-btn, .secondary-btn {
+.primary-btn,
+.secondary-btn {
     padding: 8px 16px;
     border-radius: 6px;
     font-size: 14px;
@@ -1045,42 +1225,36 @@ button[id$="AddElementButton"].active {
 }
 
 .primary-btn {
-    background-color: #0F172A;
-    color: white;
-    border-color: #0F172A;
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    border-color: var(--btn-primary-bg);
 }
 
 .primary-btn:hover {
-    background-color: #1E293B;
+    background-color: var(--btn-primary-hover);
 }
 
 .secondary-btn {
-    background-color: #f4f4f5;
-    color: #333;
-    border-color: #e4e4e7;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
 }
 
 .secondary-btn:hover {
-    background-color: #e4e4e7;
+    background-color: var(--bg-hover);
 }
 
 /* --- Base Icon Button Style (shadcn-secondary inspired) --- */
 .icon-btn {
     display: inline-flex;
-    /* Use inline-flex for better alignment */
     align-items: center;
     justify-content: center;
     border-radius: 6px;
     padding: 4px;
     margin: 0 2px 0 0;
     cursor: pointer;
-
-    /* Subtle border and transparent background */
-    border: 1px solid #e4e4e7;
-    /* hsl(240 5.9% 90%) */
+    border: 1px solid var(--border-color);
     background-color: transparent;
-
-    /* Smooth transitions for all properties */
     transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
@@ -1088,17 +1262,14 @@ button[id$="AddElementButton"].active {
 .icon-btn svg {
     width: 16px;
     height: 16px;
-    stroke: #71717a;
-    /* A softer, medium gray - hsl(240 3.8% 46.1%) */
+    stroke: var(--icon-color);
     stroke-width: 2;
-    /* Slightly thinner for a cleaner look */
     transition: stroke 0.2s ease-in-out;
 }
 
 /* --- Standard Hover State (for peek-symbol) --- */
 .peek-symbol:hover {
-    background-color: #f4f4f5;
-    /* A very light gray hover - hsl(240 4.8% 95.9%) */
+    background-color: var(--bg-tertiary);
 }
 
 /* --- Edit Button Hover State --- */
@@ -1141,8 +1312,7 @@ button[id$="AddElementButton"].active {
 
 /* --- Accessibility: Focus State --- */
 .icon-btn:focus-visible {
-    outline: 2px solid #3b82f6;
-    /* A clear blue outline */
+    outline: 2px solid var(--border-focus);
     outline-offset: 2px;
 }
 
@@ -1156,44 +1326,34 @@ footer .footer-bottom-row {
     display: flex;
     justify-content: space-between;
     margin-top: 5px;
-    /* Space above this row */
     padding-top: 5px;
-    /* Optional: space inside the row top */
-    border-top: 1px solid #eee;
-    /* Optional: faint line separator */
+    border-top: 1px solid var(--border-color);
 }
 
 /* Adjustments for items within the flex row */
 .footer-bottom-row #what-sites {
     margin: 0;
-    /* Remove default margins if any */
     flex-shrink: 0;
-    /* Prevent it from shrinking too much */
 }
 
 .footer-bottom-row #what-sites #sites-text {
-    /* Reduce margin if needed */
     margin-left: 5px;
-    color: #555;
-    /* Optional: slightly dimmer color */
+    color: var(--text-muted);
     font-size: 0.9em;
 }
 
 .footer-bottom-row #what-sites ul#sites-available {
-    /* Position the dropdown list appropriately if it opens */
     position: absolute;
     bottom: 25px;
-    /* Adjust as needed so it opens upwards */
     left: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--dropdown-shadow);
     padding: 5px;
     z-index: 10;
     width: 100%;
     max-width: 200px;
     min-width: 150px;
-    /* Adjust width */
 }
 
 .footer-bottom-row .suggestions-link {
@@ -1259,14 +1419,13 @@ footer .friction-customisation {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Semi-transparent black */
+    background-color: var(--modal-overlay);
     z-index: 99;
-    /* Below the help container (100) but above everything else */
 }
 
 #help-container {
-    position: fixed;   /* was absolute */
+    position: fixed;
+    /* was absolute */
     top: 8px;
     right: 8px;
     z-index: 100;
@@ -1275,33 +1434,40 @@ footer .friction-customisation {
 
 #help-icon-btn {
     padding: 4px;
-    background-color: #1a1a1a;
-    border-color: #1a1a1a;
+    background-color: var(--btn-secondary-bg);
+    border-color: var(--btn-secondary-bg);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 #help-icon-btn svg {
     width: 20px;
     height: 20px;
-    stroke: #ffffff;
+    stroke: var(--btn-secondary-text);
 }
-#help-icon-btn:hover { background-color: #2d2d2d; border-color: #2d2d2d; }
+
+#help-icon-btn:hover {
+    background-color: var(--btn-secondary-hover);
+    border-color: var(--btn-secondary-hover);
+}
 
 #faq-dropdown h3 {
     margin: 0.5em 0 0 0;
     font-size: 0.9em;
     font-weight: 600;
-    color: #71717a;
+    color: var(--text-muted);
     padding-left: 4px;
 }
 
 /* Make the FAQ dropdown behave like a modal */
 #faq-dropdown {
     text-align: left;
-    color: #18181b;
-    background-color: #ffffff;
-    border: 1px solid #e4e4e7;
+    color: var(--text-secondary);
+    background-color: var(--modal-bg);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--modal-shadow);
     padding: 10px 8px 20px 18px;
     position: fixed;
     top: 2px;
@@ -1318,11 +1484,14 @@ footer .friction-customisation {
 #modal-settings .toggle-group.friction-customisation {
     margin: 8px 4px;
 }
+
 /* Bigger checkbox and label inside the modal settings row */
 #modal-settings .friction-toggle input[type="checkbox"] {
     transform: scale(1.25);
     transform-origin: left center;
     margin-right: 6px;
+    accent-color: var(--accent-primary);
+    cursor: pointer;
 }
 
 #modal-settings .friction-toggle label {
@@ -1337,6 +1506,8 @@ footer .friction-customisation {
     transform-origin: left center;
     margin-right: 6px;
     vertical-align: middle;
+    accent-color: var(--accent-primary);
+    cursor: pointer;
 }
 
 #modal-settings label[for="frictionToggle"],
@@ -1348,7 +1519,7 @@ footer .friction-customisation {
 
 
 .faq-item {
-    border-bottom: 1px solid #e4e4e7;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .faq-item:last-child {
@@ -1367,18 +1538,18 @@ footer .friction-customisation {
     cursor: pointer;
     font-size: 0.9rem;
     font-family: system-ui;
-    color: #18181b;
+    color: var(--text-secondary);
 }
 
 .faq-trigger:hover {
-    background-color: #f4f4f5;
+    background-color: var(--bg-tertiary);
     border-radius: 4px;
 }
 
 .faq-chevron {
     width: 16px;
     height: 16px;
-    stroke: #71717a;
+    stroke: var(--icon-color);
     transition: transform 0.2s ease-in-out;
     flex-shrink: 0;
     margin-left: 8px;
@@ -1403,7 +1574,7 @@ footer .friction-customisation {
 .faq-content p {
     margin: 0;
     font-size: 0.85rem;
-    color: #71717a;
+    color: var(--text-muted);
     line-height: 1.5;
 }
 
@@ -1411,12 +1582,12 @@ footer .friction-customisation {
     position: sticky;
     top: 0;
     float: right;
-    background: white;
+    background: var(--modal-bg);
     border: none;
     cursor: pointer;
     padding: 4px;
     border-radius: 4px;
-    color: #000000;
+    color: var(--text-primary);
     z-index: 1001;
     margin: -8px -8px 10px auto;
     display: block;
@@ -1431,6 +1602,7 @@ footer .friction-customisation {
     text-align: left;
     margin-bottom: 1em;
 }
+
 .review-prompt-content p {
     margin-block-end: 0.1em;
     font-style: italic;
@@ -1448,26 +1620,26 @@ footer .friction-customisation {
     font-weight: 500;
     line-height: 1.25rem;
     border-radius: 6px;
-    border: 1px solid #e4e4e7;
-    background-color: #ffffff;
-    color: #18181b;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
     text-decoration: none;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
 
 .review-link:hover {
-    background-color: #f4f4f5;
-    border-color: #d4d4d8;
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-hover);
 }
 
 .review-link:focus-visible {
-    outline: 2px solid #3b82f6;
+    outline: 2px solid var(--border-focus);
     outline-offset: 2px;
 }
 
 .review-link:active {
-    background-color: #e4e4e7;
+    background-color: var(--bg-hover);
 }
 
 /* Shadcn-inspired Ghost Button for No Thanks */
@@ -1482,60 +1654,33 @@ footer .friction-customisation {
     border-radius: 6px;
     border: 1px solid transparent;
     background-color: transparent;
-    color: #71717a;
+    color: var(--icon-color);
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
 
 #noThanksButton:hover {
-    background-color: #f4f4f5;
-    color: #18181b;
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
 }
 
 #noThanksButton:focus-visible {
-    outline: 2px solid #3b82f6;
+    outline: 2px solid var(--border-focus);
     outline-offset: 2px;
 }
 
 #noThanksButton:active {
-    background-color: #e4e4e7;
-}
-
-/* Dark Mode Styles */
-@media (prefers-color-scheme: dark) {
-    .review-link {
-        background-color: #27272a;
-        border-color: #3f3f46;
-        color: #fafafa;
-    }
-
-    .review-link:hover {
-        background-color: #3f3f46;
-        border-color: #52525b;
-    }
-
-    .review-link:active {
-        background-color: #18181b;
-    }
-
-    #noThanksButton {
-        color: #a1a1aa;
-    }
-
-    #noThanksButton:hover {
-        background-color: #3f3f46;
-        color: #fafafa;
-    }
-
-    #noThanksButton:active {
-        background-color: #27272a;
-    }
+    background-color: var(--bg-hover);
 }
 
 
 /* Add this to popup.css to define the loading animation */
 @keyframes loading {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+    0% {
+        transform: rotate(0deg);
+    }
 
+    100% {
+        transform: rotate(360deg);
+    }
+}
