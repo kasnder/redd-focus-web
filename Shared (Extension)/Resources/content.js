@@ -274,7 +274,7 @@
         button.style.borderRadius = '9999px';
         button.style.padding = '4px 12px';
         button.style.fontSize = '12px';
-        button.style.fontWeight = '600';
+        button.style.fontWeight = '500';
         button.style.lineHeight = '1.4';
         button.style.borderWidth = '1px';
         button.style.borderStyle = 'solid';

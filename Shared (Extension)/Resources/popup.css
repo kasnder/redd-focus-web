@@ -423,19 +423,51 @@ input:checked+.slider:before {
 }
 
 #saveButton {
-    background-color: var(--btn-primary-bg);
+    background-color: var(--btn-secondary-bg);
     border: none;
-    color: var(--btn-primary-text);
-    padding: 7px;
+    color: var(--btn-secondary-text);
+    padding: 6px 12px;
     text-align: center;
     text-decoration: none;
-    font-size: 0.8em;
-    font-weight: bold;
-    border-radius: 2px;
+    font-size: 0.85em;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 #saveButton:hover {
-    background-color: var(--btn-primary-hover);
+    background-color: var(--btn-secondary-hover);
+}
+
+/* Success state for save button - Blue in Light, Purple in Dark */
+#saveButton.is-success {
+    background-color: var(--accent-primary);
+    color: #ffffff;
+}
+
+#saveButton.is-success:hover {
+    background-color: var(--accent-hover);
+}
+
+.dark-mode #saveButton {
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.dark-mode #saveButton:hover {
+    background-color: var(--bg-hover);
+}
+
+.dark-mode #saveButton.is-success {
+    background-color: var(--accent-primary);
+    color: var(--btn-primary-text);
+    border-color: var(--accent-primary);
+}
+
+.dark-mode #saveButton.is-success:hover {
+    background-color: var(--accent-hover);
 }
 
 /* Style for Add more elements button */
@@ -446,7 +478,7 @@ button[id$="AddElementButton"] {
     padding: 7px;
     text-align: center;
     font-size: 0.8em;
-    font-weight: bold;
+    font-weight: 500;
     border-radius: 6px;
     /* Consistency with help-icon-btn */
     cursor: pointer;
@@ -974,40 +1006,6 @@ p.how-to-description {
     .platform-iphone {
         display: none;
     }
-}
-
-button[id$="AddElementButton"],
-#saveButton {
-    padding: 6px 12px;
-    font-size: 0.85em;
-    font-weight: 500;
-    border: none;
-    border-radius: 6px;
-    /* Slightly rounded */
-    cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-#saveButton {
-    background-color: #1a1a1a;
-    color: #ffffff;
-}
-
-#saveButton:hover {
-    background-color: #2d2d2d;
-    /* Lighter blackish on hover */
-}
-
-/* Success state for save button */
-#saveButton.is-success {
-    background-color: #16a34a;
-    /* green-600 */
-    color: #ffffff;
-}
-
-#saveButton.is-success:hover {
-    background-color: #15803d;
-    /* green-700 */
 }
 
 /****** Checkboxes Styling (Legacy removed) ******/
