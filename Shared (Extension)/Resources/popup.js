@@ -8,6 +8,88 @@ document.addEventListener('DOMContentLoaded', function () {
         const paymentField = document.getElementById('payment-status');
         paymentField.style.display = 'none';
 
+        // ========================================
+        // Theme Management
+        // ========================================
+
+        // Media query for system preference
+        const systemDarkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+        /**
+         * Apply theme to the document based on preference
+         * @param {string} theme - 'system', 'light', or 'dark'
+         */
+        function applyTheme(theme) {
+            const root = document.documentElement;
+
+            if (theme === 'dark') {
+                root.classList.add('dark-mode');
+            } else if (theme === 'light') {
+                root.classList.remove('dark-mode');
+            } else {
+                // 'system' - match OS/browser preference
+                if (systemDarkModeQuery.matches) {
+                    root.classList.add('dark-mode');
+                } else {
+                    root.classList.remove('dark-mode');
+                }
+            }
+        }
+
+        /**
+         * Handle system preference change when theme is set to 'system'
+         */
+        function handleSystemThemeChange(e) {
+            chrome.storage.sync.get('themePreference', function (result) {
+                if (result.themePreference === 'system' || !result.themePreference) {
+                    applyTheme('system');
+                }
+            });
+        }
+
+        // Listen for system theme changes
+        systemDarkModeQuery.addEventListener('change', handleSystemThemeChange);
+
+        /**
+         * Initialize theme from storage and set up the theme selector
+         */
+        function setupTheme() {
+            const themeSelect = document.getElementById('themeSelect');
+            if (!themeSelect) return;
+
+            // Detect mobile/tablet devices
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+            if (isMobile) {
+                // On mobile, hide entire theme section and use system theme
+                const themeSettingsDiv = document.getElementById('theme-settings');
+                const appearanceHeading = document.getElementById('appearance-heading');
+                if (themeSettingsDiv) themeSettingsDiv.style.display = 'none';
+                if (appearanceHeading) appearanceHeading.style.display = 'none';
+                chrome.storage.sync.set({ themePreference: 'system' });
+                applyTheme('system');
+                return;
+            }
+
+            // Load saved theme preference
+            chrome.storage.sync.get('themePreference', function (result) {
+                const savedTheme = result.themePreference || 'system';
+                themeSelect.value = savedTheme;
+                applyTheme(savedTheme);
+            });
+
+            // Handle theme change
+            themeSelect.addEventListener('change', function () {
+                const selectedTheme = themeSelect.value;
+                chrome.storage.sync.set({ themePreference: selectedTheme });
+                applyTheme(selectedTheme);
+            });
+        }
+
+        // Setup theme immediately
+        setupTheme();
+
         /*// Check payment status when popup opens"
         checkPaymentStatus();
 

@@ -1,18 +1,19 @@
 new features:
 
-1. redesigned custom-selector, button, and progressive feedback on hidden elements
-2. make google ads highlighting colour more red and account for dark mode on browsers
-3. YouTube: add ability to hide the "You" section in the menu bar
-4. YouTube: thumbnail styling now includes ads and sponsored posts
-5. Facebook: add ability to hide "People you may know" on the feed
-6. Facebook: add ability to hide "Contacts" on right sidebar on desktop
-7. Instagram: add ability to hide suggested posts
-8. Instagram: add ability to hide notification badges
-9. X/Twitter: add ability to hide "Explore" section
-10. WhatsApp Web: add ability to hide "Status", "Channels", and "Communities" tabs
-11. WhatsApp Web: add ability to hide chat profile pictures
-12. Reddit: add ability to hide left and right sidebars on desktop 
-13. Reddit: add ability to hide AI Related Answers/Posts sections on mobile
+1. introduced dark mode!
+2. redesigned custom-selector, button, and progressive feedback on hidden elements
+3. make google ads highlighting colour more red and account for dark mode on browsers
+4. YouTube: add ability to hide the "You" section in the menu bar
+5. YouTube: thumbnail styling now includes ads and sponsored posts
+6. Facebook: add ability to hide "People you may know" on the feed
+7. Facebook: add ability to hide "Contacts" on right sidebar on desktop
+8. Instagram: add ability to hide suggested posts
+9. Instagram: add ability to hide notification badges
+10. X/Twitter: add ability to hide "Explore" section
+11. WhatsApp Web: add ability to hide "Status", "Channels", and "Communities" tabs
+12. WhatsApp Web: add ability to hide chat profile pictures
+13. Reddit: add ability to hide left and right sidebars on desktop 
+14. Reddit: add ability to hide AI Related Answers/Posts sections on mobile
 
 bug fixes and improvements:
 
