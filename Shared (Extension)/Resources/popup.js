@@ -57,6 +57,21 @@ document.addEventListener('DOMContentLoaded', function () {
             const themeSelect = document.getElementById('themeSelect');
             if (!themeSelect) return;
 
+            // Detect mobile/tablet devices
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+            if (isMobile) {
+                // On mobile, hide entire theme section and use system theme
+                const themeSettingsDiv = document.getElementById('theme-settings');
+                const appearanceHeading = document.getElementById('appearance-heading');
+                if (themeSettingsDiv) themeSettingsDiv.style.display = 'none';
+                if (appearanceHeading) appearanceHeading.style.display = 'none';
+                chrome.storage.sync.set({ themePreference: 'system' });
+                applyTheme('system');
+                return;
+            }
+
             // Load saved theme preference
             chrome.storage.sync.get('themePreference', function (result) {
                 const savedTheme = result.themePreference || 'system';
