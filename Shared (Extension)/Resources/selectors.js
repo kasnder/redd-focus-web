@@ -101,7 +101,7 @@ const cssSelectors = {
     instagramNotificationBadgesCssOff: 'div.xmn1u35, div.x14vhib7.x1c9tyrk, div.html-div.x14vhib7 { display: none !important; }',
 
     // LinkedIn: Off = hide feed except composer. Focused (?highlightedUpdateUrn / feed/update) = hide mainFeed direct children from 5th onward (1–4 stay) + sort/New posts (svg# ids).
-    linkedinFeedCssOn: 'div[role="list"][data-testid="mainFeed"] > *:not([aria-label="Start a post"]):not(:has([aria-label="Start a post"])) { display: revert !important; } div[role="list"][data-testid="mainFeed"] > *:nth-child(n+5) { display: revert !important; } div[role="list"][data-testid="mainFeed"] div._04d30d0f.dffb17a0._98350e62:has(svg#chevron-down-medium), div[role="list"][data-testid="mainFeed"] div[data-display-contents="true"]:has(button svg#arrow-up-small) { display: revert !important; }',
+    linkedinFeedCssOn: '',
     linkedinFeedCssOff: 'div[role="list"][data-testid="mainFeed"] > *:not([aria-label="Start a post"]):not(:has([aria-label="Start a post"])) { display: none !important; } div[role="list"][data-testid="mainFeed"] div._04d30d0f.dffb17a0._98350e62:has(svg#chevron-down-medium), div[role="list"][data-testid="mainFeed"] div[data-display-contents="true"]:has(button svg#arrow-up-small) { display: none !important; }',
     linkedinFeedCssFocused: 'div[role="list"][data-testid="mainFeed"] > *:nth-child(n+5) { display: none !important; } div[role="list"][data-testid="mainFeed"] div._04d30d0f.dffb17a0._98350e62:has(svg#chevron-down-medium), div[role="list"][data-testid="mainFeed"] div[data-display-contents="true"]:has(button svg#arrow-up-small) { display: none !important; }',
     linkedinNotificationsCssOn: '',
