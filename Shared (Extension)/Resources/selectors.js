@@ -63,6 +63,9 @@ const cssSelectors = {
     facebookNotificationsCssOff: 'div[aria-label*="Notifications"], div[data-hidden-ref-key="notifications.pill.jewel.hidden"], div[role="tab"][aria-label*="notifications" i], #screen-root div[data-mcomponent="MScreen"] div[data-mcomponent="MContainer"] div[data-mcomponent="MContainer"]:nth-child(2) div[role="button"]:nth-child(5) div[data-mcomponent="MContainer"]:nth-child(3) {visibility: hidden !important;} div.x6s0dn4.x78zum5.x5yr21d.xl56j7k.x1xegmmw:has([role="button"][aria-label*="Notifications"]) { display: none !important; }',
     facebookSponsoredCssOn: '',
     facebookSponsoredCssOff: 'a[aria-label="Advertiser"] { display: none !important; } div[data-visualcompletion="ignore-late-mutation"]:has([aria-label*="sponsored content"]) { display: none !important; } a[attributionsrc^="/privacy_sandbox/comet/register/source"] { display: none !important; }',
+    /* m.facebook.com: fixed bottom “Open app” strip (#screen-root + MContainer tree only exists on mobile web) */
+    facebookOpenAppCssOn: '',
+    facebookOpenAppCssOff: '#screen-root div.m.fixed-container.bottom[data-mcomponent="MContainer"][data-type="container"]:has([data-mcomponent="MContainer"].bg-s2 [data-mcomponent="ServerTextArea"] span.f2) { display: none !important; }',
 
     // X (Twitter)
     xExploreCssOn: 'nav[role="navigation"] a[href="/explore"] { display: flex !important; }',
