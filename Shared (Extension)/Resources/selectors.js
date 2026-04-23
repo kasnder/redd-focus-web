@@ -148,8 +148,6 @@ const cssSelectors = {
     redditNotificationCssOff: '#notifications-inbox-button { display: none !important; }',
     redditChatCssOn: 'reddit-chat-header-button, faceplate-tracker[noun="chat"] { display: block !important; }',
     redditChatCssOff: 'reddit-chat-header-button, faceplate-tracker[noun="chat"] { display: none !important; }',
-    redditTrendingCssOn: '[search-telemetry-source="popular_carousel"] { display: block !important; }',
-    redditTrendingCssOff: '[search-telemetry-source="popular_carousel"] { display: none !important; }',
     redditRelatedCssOn: '#answers-suggested-queries-m3, aside[aria-label="Related Posts Section"] { display: block !important; }',
     redditRelatedCssOff: '#answers-suggested-queries-m3, aside[aria-label="Related Posts Section"] { display: none !important; }',
     redditBestOfCssOn: 'faceplate-tracker[noun="communities_menu"]:has(a), faceplate-tracker[noun^="rereddit"] { display: block !important; }',
