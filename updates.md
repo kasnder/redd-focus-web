@@ -25,5 +25,4 @@ bug fixes and improvements:
 11. Instagram: fix issue on desktop where suggested follows was hiding account information
 12. Instagram: "Comments" selector now also hides comments in desktop Reels tab and on mobile posts, without hiding user captions
 13. Reddit: removed "Trending topics" selector as depracated and now moved into 'Popular' tab
-14. Reddit: removed "Right sidebar" selector from mobile as there is no right sidebar on mobile 
 
