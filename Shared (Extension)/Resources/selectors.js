@@ -72,6 +72,8 @@ const cssSelectors = {
     xExploreCssOff: 'nav[role="navigation"] a[href="/explore"] { display: none !important; }',
     xNotificationsCssOn: 'nav[role="navigation"] a[href="/notifications"] { display: flex !important; }',
     xNotificationsCssOff: 'nav[role="navigation"] a[href="/notifications"] { display: none !important; }',
+    xNewsCssOn: '',
+    xNewsCssOff: 'div[data-testid="sidebarColumn"] div:has(> [data-testid="news_sidebar"]), div[role="presentation"]:has(a[href="/explore/tabs/news"]) { display: none !important; } /* mobile */ div[data-testid="cellInnerDiv"]:has([data-testid="trend"][role="link"] > div.r-16y2uox.r-kzbkwu.r-ttdzmv.r-bnwqim), div[data-testid="cellInnerDiv"]:has(h2[role="heading"]):has(+ div[data-testid="cellInnerDiv"] [data-testid="trend"][role="link"] > div.r-16y2uox.r-kzbkwu.r-ttdzmv.r-bnwqim) { display: none !important; }',
     xTrendsCssOn: 'div[data-testid="sidebarColumn"] section[role="region"], div[role="presentation"]:has(a[href="/explore/tabs/trending"]) {display: flex !important;}',
     xTrendsCssOff: 'div[data-testid="sidebarColumn"] section[role="region"], div[role="presentation"]:has(a[href="/explore/tabs/trending"]) {display: none !important; }',
     xFollowCssOn: 'div[data-testid="sidebarColumn"] div.css-175oi2r.r-1bro5k0:has(aside[role="complementary"]), div[data-testid="cellInnerDiv"]:has([data-testid="UserCell"]), div[data-testid="cellInnerDiv"]:has(a[href^="/i/connect_people"]), div[data-testid="cellInnerDiv"]:has(h2[role="heading"]):has(+ div[data-testid="cellInnerDiv"] [data-testid="UserCell"]), div[data-testid="cellInnerDiv"]:has(h2[role="heading"]):has(+ div[data-testid="cellInnerDiv"] a[href^="/i/connect_people"]) { display: flex !important;}',
