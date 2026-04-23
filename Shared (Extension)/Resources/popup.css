@@ -749,6 +749,14 @@ body.dark-mode .faq-content p {
     color: var(--text-muted);
 }
 
+/* YouTube previews row uses a chevron instead of a checkbox — drop the
+   checkbox-reserved left padding so the chevron lines up with the left
+   edge of the other rows' checkboxes. Everything else stays as-is. */
+.hide-checkboxes .a-toggle#hide-previews,
+.hide-checkboxes .a-toggle#hide-previews-not-mobile {
+    padding-left: 0;
+}
+
 p.previews-text {
     display: inline;
     font-style: italic;
@@ -824,7 +832,6 @@ p.how-to-description {
         padding: 8px;
         font-style: italic;
         margin: 0px;
-        max-width: 90%;
     }
 }
 
