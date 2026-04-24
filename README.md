@@ -47,7 +47,3 @@ To run this locally:
 2. Clone or download the repository  
 3. Open the project in Xcode  
 4. Click the **Play** button  
-
-## Terms of Use
-
-This code is licensed under the [CC BY-NC-ND 3.0](https://creativecommons.org/licenses/by-nc-nd/3.0/) licence.
