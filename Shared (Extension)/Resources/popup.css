@@ -975,6 +975,11 @@ p.how-to-description {
 /******* HIDE IRRELEVANT TOGGLES ******/
 /* iPhone */
 @media only screen and (max-device-width: 768px) {
+    /* Tighter space between “Auto-playing previews” / how-to title and subtext (Safari iOS was reading too open vs desktop). */
+    :root {
+        --previews-how-to-gap: 2px;
+    }
+
     footer .footer-bottom-row {
         padding: 10px;
     }
@@ -1023,9 +1028,13 @@ p.how-to-description {
 
     #how-to-description {
         font-size: 0.9em;
-        padding: 8px;
+        /* Bottom only: match p.previews-text (no horizontal inset) so subtext lines up with the selector / title. */
+        padding: 0 0 6px 0;
+        -webkit-padding-start: 0;
+        padding-inline-start: 0;
         font-style: italic;
         margin: var(--previews-how-to-gap) 0 0 0;
+        text-align: start;
     }
 }
 
