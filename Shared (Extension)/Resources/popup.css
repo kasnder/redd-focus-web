@@ -211,25 +211,47 @@ body {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Design language: serif for headings / product chrome */
-.toggle-group h2,
+/* Section labels (e.g. “Watch page”) + settings panel headings: Arial, caps, bold, body text colour */
+.toggle-group h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.95em;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin: 0 0 5px 0;
+}
+
 #faq-dropdown h3,
 #accountabilityHeading,
-#appearance-heading,
-.edit-dialog h3,
-#currentSiteInfo strong,
-#payment-status {
-    font-family: Georgia, "Times New Roman", serif;
+#appearance-heading {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.95em;
     font-weight: 700;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin: 0.5em 0 0 0;
 }
 
-.toggle-group h2 {
-    font-weight: 700;
+#accountabilityHeading .accountability-on,
+#accountabilityHeading #currentSiteNameModal {
+    text-transform: none;
+    font-weight: 400;
+    letter-spacing: normal;
+    color: var(--text-primary);
 }
 
-#faq-dropdown h3 {
-    font-family: Georgia, "Times New Roman", serif;
+#currentSiteInfo strong {
+    font-family: inherit;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+#payment-status p {
+    font-family: inherit;
+    font-weight: 400;
+    color: var(--text-primary);
 }
 
 /* Native checkboxes (e.g. Google options): teal accent, tick stays readable */
@@ -272,11 +294,6 @@ body.modal-open {
 .toggle-group {
     margin: 0px 0px 15px 0px;
     padding: 0px;
-}
-
-.toggle-group h2 {
-    font-size: 0.95em;
-    margin: 0px 0px 5px 0px;
 }
 
 a:visited {
@@ -482,7 +499,7 @@ button[id$="AddElementButton"] {
     border: none;
     padding: 7px 10px;
     text-align: center;
-    font-size: 0.8em;
+    font-size: 0.95em;
     font-weight: 600;
     font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
     border-radius: 8px;
@@ -842,8 +859,10 @@ body.dark-mode #faq-dropdown {
     color: var(--text-secondary);
 }
 
-body.dark-mode #faq-dropdown h3 {
-    color: var(--text-muted);
+body.dark-mode #faq-dropdown h3,
+body.dark-mode #accountabilityHeading,
+body.dark-mode #appearance-heading {
+    color: var(--text-primary);
 }
 
 body.dark-mode .faq-item {
@@ -1090,9 +1109,12 @@ p.how-to-description {
 
 .edit-dialog h3 {
     margin: 0 0 16px 0;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text-secondary);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.95em;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-primary);
 }
 
 .edit-dialog-field {
@@ -1402,11 +1424,15 @@ footer .friction-customisation {
     background-color: var(--btn-custom-hide-hover-bg);
 }
 
-#faq-dropdown h3 {
-    margin: 0.5em 0 0 0;
-    font-size: 0.9em;
-    font-weight: 600;
-    color: var(--text-muted);
+/* h3 + theme label (overrides: colour was --text-muted) */
+#theme-settings-label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-right: 8px;
 }
 
 /* Tiny gap between the "FAQ" heading and the first accordion row */
