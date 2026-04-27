@@ -22,12 +22,24 @@ function show(platform, enabled) {
     }
 }
 
+function postToController(message) {
+    if (typeof webkit === "undefined" ||
+        !webkit.messageHandlers ||
+        !webkit.messageHandlers.controller) {
+        console.error("ReDD Focus: webkit.messageHandlers.controller is unavailable");
+        return;
+    }
+    webkit.messageHandlers.controller.postMessage(message);
+}
+
 function openPreferences() {
-    webkit.messageHandlers.controller.postMessage("open-preferences");
+    console.log("ReDD Focus: openPreferences clicked");
+    postToController("open-preferences");
 }
 
 function openSafari() {
-    webkit.messageHandlers.controller.postMessage("open-safari");
+    console.log("ReDD Focus: openSafari clicked");
+    postToController("open-safari");
 }
 
 // Initialize event listeners when DOM is ready

@@ -220,26 +220,37 @@ body {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Section labels (e.g. “Watch page”) + settings panel headings: Arial, caps, bold, body text colour */
-.toggle-group h2 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.95em;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--text-primary);
-    margin: 0 0 5px 0;
-}
-
+/* Section labels (e.g. “Watch page”) + settings panel headings: Arial, caps, medium, dark grey */
+.toggle-group h2,
 #faq-dropdown h3,
 #accountabilityHeading,
 #appearance-heading {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.95em;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--text-primary);
+    color: #4d4d57;
+}
+
+.toggle-group h2 {
+    margin: 0 0 5px 0;
+}
+
+/* Dark mode keeps the muted token (hardcoded grey would be unreadable on dark bg). */
+.dark-mode .toggle-group h2,
+.dark-mode #faq-dropdown h3,
+.dark-mode #accountabilityHeading,
+.dark-mode #appearance-heading {
+    color: var(--text-muted);
+}
+
+/* Extra breathing room above APPEARANCE and FAQ (not the first heading, ACCOUNTABILITY). */
+#faq-dropdown h3 {
+    margin-top: 1.75em;
+}
+#accountabilityHeading {
+    margin-top: 0;
 }
 
 #accountabilityHeading .accountability-on,
@@ -953,7 +964,7 @@ p.previews-text {
 }
 
 p.how-to-description {
-    font-size: 0.95em;
+    font-size: 1em;
 }
 
 #how-to-description,
@@ -2083,22 +2094,16 @@ body.eula-gate-active {
 }
 
 .eula-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    min-height: 100%;
+    position: relative;
+    width: 100%;
     background-color: var(--bg-primary);
     z-index: 10001;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
     text-align: left;
     box-sizing: border-box;
 }
 
 .eula-overlay .screen-container {
-    padding: 24px 24px 88px;
+    padding: 24px 16px 24px;
     text-align: left;
     max-width: 100%;
     margin: 0 auto;
@@ -2279,10 +2284,10 @@ body.eula-gate-active {
 .eula-overlay .top-title {
     margin: 0;
     font-family: var(--font-heading);
-    font-size: 1.9em;
+    font-size: 1.4em;
     font-weight: 700;
     letter-spacing: -0.01em;
-    line-height: 1.05;
+    line-height: 1.15;
     color: var(--text-primary);
 }
 
