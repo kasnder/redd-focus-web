@@ -176,15 +176,13 @@
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
-/* Settings: same shell as “Hide custom element” (teal border + subtle fill); icon stroke unchanged */
+/* Settings (gear): same surface as “Hide custom element”; no border */
 .dark-mode #help-icon-btn {
     background-color: var(--btn-custom-hide-bg);
-    border-color: var(--btn-custom-hide-border);
 }
 
 .dark-mode #help-icon-btn:hover {
     background-color: var(--btn-custom-hide-hover-bg);
-    border-color: var(--btn-custom-hide-border);
 }
 
 .dark-mode #help-icon-btn svg {
@@ -477,11 +475,11 @@ input:checked+.slider:before {
     background-color: var(--accent-hover);
 }
 
-/* Hide custom element: subtle surface + teal border; selection mode = filled teal */
+/* Hide custom element: subtle surface; selection mode = filled teal; no border */
 button[id$="AddElementButton"] {
     background-color: var(--btn-custom-hide-bg);
     color: var(--btn-custom-hide-text);
-    border: 1px solid var(--btn-custom-hide-border);
+    border: none;
     padding: 7px 10px;
     text-align: center;
     font-size: 0.8em;
@@ -489,7 +487,7 @@ button[id$="AddElementButton"] {
     font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 button[id$="AddElementButton"]:hover {
@@ -499,18 +497,16 @@ button[id$="AddElementButton"]:hover {
 button[id$="AddElementButton"].active {
     background-color: var(--accent-primary);
     color: #ffffff;
-    border-color: var(--accent-primary);
 }
 
 button[id$="AddElementButton"].active:hover {
     background-color: var(--accent-hover);
-    border-color: var(--accent-hover);
 }
 
 .dark-mode button[id$="AddElementButton"] {
     background-color: var(--btn-custom-hide-bg);
     color: var(--btn-custom-hide-text);
-    border: 1px solid var(--btn-custom-hide-border);
+    border: none;
 }
 
 .dark-mode button[id$="AddElementButton"]:hover {
@@ -520,12 +516,10 @@ button[id$="AddElementButton"].active:hover {
 .dark-mode button[id$="AddElementButton"].active {
     background-color: var(--accent-primary);
     color: #ffffff;
-    border-color: var(--accent-primary);
 }
 
 .dark-mode button[id$="AddElementButton"].active:hover {
     background-color: var(--accent-hover);
-    border-color: var(--accent-hover);
 }
 
 .ordinary-checkbox [type="checkbox"] {
@@ -1392,10 +1386,10 @@ footer .friction-customisation {
 #help-icon-btn {
     padding: 4px;
     background-color: var(--btn-custom-hide-bg);
-    border: 1px solid var(--btn-custom-hide-border);
+    border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+    transition: background-color 0.2s ease;
 }
 
 #help-icon-btn svg {
@@ -1406,7 +1400,6 @@ footer .friction-customisation {
 
 #help-icon-btn:hover {
     background-color: var(--btn-custom-hide-hover-bg);
-    border-color: var(--btn-custom-hide-border);
 }
 
 #faq-dropdown h3 {
