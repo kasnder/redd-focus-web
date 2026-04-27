@@ -1219,6 +1219,16 @@ p.how-to-description {
     stroke: var(--accent-primary);
 }
 
+/* Dark: same cell hover as “Hide custom element”; icon stays teal (not indigo from --accent-primary) */
+.dark-mode .edit-symbol:hover {
+    background-color: var(--btn-custom-hide-hover-bg);
+    border-color: var(--redd-teal);
+}
+
+.dark-mode .edit-symbol:hover svg {
+    stroke: var(--redd-teal);
+}
+
 /* --- Save Button Hover State --- */
 .save-symbol:hover {
     background-color: #dcfce7;
