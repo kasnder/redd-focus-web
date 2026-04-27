@@ -80,6 +80,12 @@
     --settings-overlay-padding-y: 0.75rem;
     /* Space between each FAQ question row and its expanded answer (adjust here after shipping) */
     --faq-question-response-gap: 2px;
+    /* Space below the “FAQ” title before the first question row (see also .faq-trigger padding) */
+    --settings-faq-title-below: 1px;
+    /* Nudge the “Theme:” label on the y-axis (negative = up). Does not move the dropdown. */
+    --settings-theme-label-nudge-y: -1px;
+    /* Nudge the current value text inside the theme button (see #themeSelectTriggerText; negative = up) */
+    --settings-theme-trigger-text-nudge-y: -1px;
 
     /* Icon colors */
     --icon-color: var(--redd-muted);
@@ -231,7 +237,6 @@ body {
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--text-primary);
-    margin: 0.5em 0 0 0;
 }
 
 #accountabilityHeading .accountability-on,
@@ -292,8 +297,8 @@ body.modal-open {
 }
 
 .toggle-group {
-    margin: 0px 0px 15px 0px;
-    padding: 0px;
+    margin: 0 0 15px 0;
+    padding: 0;
 }
 
 a:visited {
@@ -635,12 +640,20 @@ body.dark-mode select.shadcn-input {
 .theme-select-root .theme-select-trigger {
     margin: 0;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
     padding-right: 28px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23696977' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 8px center;
     text-align: left;
     font-family: inherit;
+}
+
+#themeSelectTriggerText {
+    display: inline-block;
+    transform: translateY(var(--settings-theme-trigger-text-nudge-y));
 }
 
 .dark-mode .theme-select-root .theme-select-trigger {
@@ -1424,22 +1437,6 @@ footer .friction-customisation {
     background-color: var(--btn-custom-hide-hover-bg);
 }
 
-/* h3 + theme label (overrides: colour was --text-muted) */
-#theme-settings-label {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--text-primary);
-    margin-right: 8px;
-}
-
-/* Tiny gap between the "FAQ" heading and the first accordion row */
-#theme-settings + h3 {
-    margin-bottom: 6px;
-}
-
 /* Make the FAQ dropdown behave like a modal */
 #faq-dropdown {
     text-align: left;
@@ -1464,42 +1461,112 @@ footer .friction-customisation {
     -webkit-overflow-scrolling: touch;
 }
 
-/* Optional: tighter spacing for the settings rows inside modal */
-#modal-settings .a-toggle,
+/* Settings dropdown: pre-FAQ. Row gaps = selector tokens; 15px top = same as between popup .toggle-groups (e.g. Watch page → General). */
+#accountabilityHeading {
+    margin: 0.5em 0 5px 0;
+}
+
+/* A bit more than 15px section gap: #modal-settings rows align to 16px checkboxes, so the gap to this title reads better from body text */
+#appearance-heading {
+    margin: 19px 0 5px 0;
+}
+
+#theme-settings + h3 {
+    margin: 15px 0 var(--settings-faq-title-below) 0;
+}
+
+#modal-settings {
+    display: flex;
+    flex-direction: column;
+    gap: var(--selector-row-spacing);
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
 #modal-settings .toggle-group.friction-customisation {
-    margin: 8px 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--selector-row-spacing);
+    margin: 0;
 }
 
-/* Label inside the modal settings row */
-#modal-settings .friction-toggle label {
-    font-size: 1rem;
-    font-weight: 500;
-    /* Consistency */
+#modal-settings .toggle-group.friction-customisation .a-toggle {
+    margin: 0;
 }
 
-/* Make 'Delay' and 'Remember settings' checkboxes/labels consistent */
+/* Theme row: label vertically centered to default shadcn trigger; reset friction-toggle margins on this id */
+#theme-settings.a-toggle.friction-toggle {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#theme-settings {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: var(--selector-gap);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    box-sizing: border-box;
+    font-size: var(--selector-font-size);
+}
+
+#theme-settings-label {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--text-primary);
+    letter-spacing: normal;
+    text-transform: none;
+    flex: 0 0 auto;
+    transform: translateY(var(--settings-theme-label-nudge-y));
+}
+
+#themeSelectRoot {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 1 auto;
+    min-width: 0;
+}
+
+#modal-settings > .a-toggle.friction-toggle {
+    position: relative;
+    min-height: var(--selector-box-size);
+    margin: 0;
+    text-align: left;
+}
+
 #modal-settings #frictionToggle,
 #modal-settings #rememberSettingsToggle {
     appearance: none;
     -webkit-appearance: none;
-    width: 16px;
-    height: 16px;
-    min-width: 16px;
-    min-height: 16px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--selector-box-size);
+    height: var(--selector-box-size);
+    min-width: var(--selector-box-size);
+    min-height: var(--selector-box-size);
+    margin: 0;
     background-color: var(--checkbox-bg);
     border: 1px solid var(--checkbox-border);
     border-radius: 4px;
-    margin-right: 8px;
-    vertical-align: middle;
     cursor: pointer;
-    position: relative;
     transition: all 0.2s ease;
-    transform: none;
     overflow: visible;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    z-index: 1;
 }
 
 #modal-settings #frictionToggle:checked,
@@ -1525,17 +1592,20 @@ footer .friction-customisation {
 .dark-mode #modal-settings #frictionToggle:checked::after,
 .dark-mode #modal-settings #rememberSettingsToggle:checked::after {
     border-color: var(--btn-primary-text);
-    /* Use dark text on purple background */
 }
 
 #modal-settings label[for="frictionToggle"],
 #modal-settings label[for="rememberSettingsToggle"] {
-    font-size: 1rem;
+    display: block;
+    padding-left: calc(var(--selector-box-size) + var(--selector-gap));
+    line-height: var(--selector-box-size);
+    font-size: var(--selector-font-size);
     font-weight: 500;
-    /* Consistency */
-    vertical-align: middle;
+    margin: 0;
+    cursor: pointer;
+    color: var(--text-primary);
+    box-sizing: border-box;
 }
-
 
 .faq-item {
     border-bottom: 1px solid var(--border-color);
