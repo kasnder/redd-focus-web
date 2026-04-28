@@ -49,6 +49,12 @@
     "activeTab",
     "nativeMessaging"
   ],
+  "web_accessible_resources": [
+    {
+      "resources": ["blocked.html", "blocked.js", "style.css", "images/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "browser_specific_settings": {
     "gecko": {
       "id": "mindshield@example.com",

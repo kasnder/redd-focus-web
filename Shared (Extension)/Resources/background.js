@@ -27,6 +27,7 @@ const BACKOFF_MAX = 5 * 60_000;
 // "too many redirects"). `chrome.runtime.getURL` resolves at runtime
 // because the extension ID is only known once the service worker is up.
 const BLOCKED_PAGE_PREFIX = chrome.runtime.getURL("blocked.html");
+const IS_SAFARI = BLOCKED_PAGE_PREFIX.startsWith("safari-web-extension://");
 
 function hostnameOf(url) {
   try {
@@ -82,6 +83,29 @@ function buildBlockedUrl(originalUrl) {
   return chrome.runtime.getURL("blocked.html") + "?" + params.toString();
 }
 
+function applyNativePayload(msg) {
+  let domainsChanged = false;
+  if (msg && Array.isArray(msg.blocklist)) {
+    const next = msg.blocklist.map(d => String(d).toLowerCase());
+    const before = blocklist.join("|");
+    const after = next.join("|");
+    if (before !== after) domainsChanged = true;
+    blocklist = next;
+    backoffMs = 5_000;
+  }
+  if (msg && Array.isArray(msg.blocks)) {
+    activeBlocks = msg.blocks.map(b => ({
+      ...b,
+      domains: Array.isArray(b.domains)
+        ? b.domains.map(d => String(d).toLowerCase())
+        : [],
+    }));
+  }
+  if (domainsChanged) {
+    sweepAllTabsForBlocks();
+  }
+}
+
 // Sweep every open tab and redirect any whose current URL matches the
 // blocklist. `chrome.tabs.onUpdated` only fires on *navigations*, so a
 // tab that was loaded to twitter.com *before* the blocklist arrived
@@ -114,6 +138,49 @@ function sweepAllTabsForBlocks() {
   });
 }
 
+// Resolve the configured "Allow in Private Browsing" toggle for this
+// extension. Unlike `tab.incognito` (which only fires when the
+// extension is *currently running* in a private tab), this returns
+// the configured state regardless of whether a private window is
+// open — so we can give the redd-block app a reliable negative
+// signal too.
+async function safariAllowedInPrivateBrowsing() {
+  try {
+    const ext = (typeof browser !== "undefined" && browser.extension) || chrome.extension;
+    if (!ext || typeof ext.isAllowedIncognitoAccess !== "function") return null;
+    return await ext.isAllowedIncognitoAccess();
+  } catch (e) {
+    console.info("[redd-block] isAllowedIncognitoAccess threw:", e && e.message);
+    return null;
+  }
+}
+
+async function pingSafariNative() {
+  if (!IS_SAFARI) return;
+  if (!chrome.runtime || typeof chrome.runtime.sendNativeMessage !== "function") return;
+  const allowed = await safariAllowedInPrivateBrowsing();
+  const payload = {
+    type: "safariStatus",
+    version: chrome.runtime.getManifest && chrome.runtime.getManifest().version,
+  };
+  if (allowed !== null) payload.privateBrowsing = allowed;
+  try {
+    chrome.runtime.sendNativeMessage(
+      NATIVE_HOST,
+      payload,
+      response => {
+        if (chrome.runtime.lastError) {
+          console.info("[redd-block] safari native ping failed:", chrome.runtime.lastError.message);
+          return;
+        }
+        applyNativePayload(response);
+      }
+    );
+  } catch (e) {
+    console.info("[redd-block] safari native ping threw:", e && e.message);
+  }
+}
+
 function connectNative() {
   // Graceful no-op if native messaging isn't available (e.g., older
   // Safari builds, stripped-down platforms).
@@ -124,37 +191,7 @@ function connectNative() {
   try {
     port = chrome.runtime.connectNative(NATIVE_HOST);
     port.onMessage.addListener(msg => {
-      // Track whether the *set* of blocked domains changed so we only
-      // sweep existing tabs when doing so might actually redirect
-      // something new. Comparing the serialized list is fine: the
-      // native host already sorts the array deterministically.
-      let domainsChanged = false;
-      if (msg && Array.isArray(msg.blocklist)) {
-        const next = msg.blocklist.map(d => String(d).toLowerCase());
-        const before = blocklist.join("|");
-        const after = next.join("|");
-        if (before !== after) domainsChanged = true;
-        blocklist = next;
-        backoffMs = 5_000; // reset on a good message
-      }
-      if (msg && Array.isArray(msg.blocks)) {
-        // Normalize domains per-block for fast comparison against
-        // hostnames, which we always lowercase.
-        activeBlocks = msg.blocks.map(b => ({
-          ...b,
-          domains: Array.isArray(b.domains)
-            ? b.domains.map(d => String(d).toLowerCase())
-            : [],
-        }));
-      }
-      if (domainsChanged) {
-        // New domains in the blocklist (or the initial frame after a
-        // disable → re-enable) — redirect any currently-open tabs that
-        // match. The common case this fixes: user disables the
-        // extension, opens twitter.com, re-enables the extension. The
-        // tab stays at twitter.com until they refresh without this.
-        sweepAllTabsForBlocks();
-      }
+      applyNativePayload(msg);
     });
     port.onDisconnect.addListener(() => {
       const err = chrome.runtime.lastError;
@@ -172,6 +209,7 @@ function connectNative() {
 }
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  pingSafariNative();
   // Cheap early-out when standalone (empty blocklist).
   if (blocklist.length === 0) return;
   const url = changeInfo.url || tab.url;
@@ -181,6 +219,14 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 });
 
 connectNative();
+pingSafariNative();
+// Keep the safari-status.json heartbeat fresh even when the user sits
+// on a single tab. Rust treats the file as stale after 45 s, so a
+// 15 s tick tolerates one missed beat (jitter) but lets the gate
+// detect a disabled extension within ~30–45 s.
+if (IS_SAFARI) {
+  setInterval(pingSafariNative, 15 * 1000);
+}
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message && message.type === "getBlocklist") {
