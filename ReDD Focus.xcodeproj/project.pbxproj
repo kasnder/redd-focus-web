@@ -25,10 +25,6 @@
 		71CCE4CF2E4F27FB002FE508 /* PaymentVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE4CD2E4F27FB002FE508 /* PaymentVerifier.swift */; };
 		71CCE4D02E4F29B3002FE508 /* PaymentVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE4CD2E4F27FB002FE508 /* PaymentVerifier.swift */; };
 		71CCE4D12E4F29B3002FE508 /* PaymentVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE4CD2E4F27FB002FE508 /* PaymentVerifier.swift */; };
-		AFB705F82F9ED9BB00BF79E7 /* blocked.html in Resources */ = {isa = PBXBuildFile; fileRef = AFB705F62F9ED9BB00BF79E7 /* blocked.html */; };
-		AFB705F92F9ED9BB00BF79E7 /* blocked.js in Resources */ = {isa = PBXBuildFile; fileRef = AFB705F72F9ED9BB00BF79E7 /* blocked.js */; };
-		AFB705FA2F9ED9BB00BF79E7 /* blocked.html in Resources */ = {isa = PBXBuildFile; fileRef = AFB705F62F9ED9BB00BF79E7 /* blocked.html */; };
-		AFB705FB2F9ED9BB00BF79E7 /* blocked.js in Resources */ = {isa = PBXBuildFile; fileRef = AFB705F72F9ED9BB00BF79E7 /* blocked.js */; };
 		D70A5B0C2E51F986008BD286 /* icon-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = D70A5B0B2E51F986008BD286 /* icon-1024.png */; };
 		D70A5B0D2E51F986008BD286 /* icon-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = D70A5B0B2E51F986008BD286 /* icon-1024.png */; };
 		D714AB822DF7403500854882 /* selectors.js in Resources */ = {isa = PBXBuildFile; fileRef = D714AB812DF7403100854882 /* selectors.js */; };
@@ -137,8 +133,6 @@
 		5CD766772EBBAD0E0089C56F /* ios-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-5.png"; sourceTree = "<group>"; };
 		71CCE4CA2E4F2585002FE508 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = background.js; sourceTree = "<group>"; };
 		71CCE4CD2E4F27FB002FE508 /* PaymentVerifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentVerifier.swift; sourceTree = "<group>"; };
-		AFB705F62F9ED9BB00BF79E7 /* blocked.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = blocked.html; sourceTree = "<group>"; };
-		AFB705F72F9ED9BB00BF79E7 /* blocked.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = blocked.js; sourceTree = "<group>"; };
 		D70A5B0B2E51F986008BD286 /* icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-1024.png"; sourceTree = "<group>"; };
 		D714AB812DF7403100854882 /* selectors.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = selectors.js; sourceTree = "<group>"; };
 		D72FA3D62DF826AB0021A2E3 /* shared_data.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = shared_data.js; sourceTree = "<group>"; };
@@ -286,8 +280,6 @@
 				D76921AC2756452E00EB4CEA /* popup.html */,
 				D76921AD2756452E00EB4CEA /* popup.css */,
 				D76921AE2756452E00EB4CEA /* popup.js */,
-				AFB705F62F9ED9BB00BF79E7 /* blocked.html */,
-				AFB705F72F9ED9BB00BF79E7 /* blocked.js */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -430,7 +422,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 2640;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					D76921B22756452E00EB4CEA = {
 						CreatedOnToolsVersion = 13.1;
@@ -532,8 +524,6 @@
 				D769221727564D8F00EB4CEA /* style.css in Resources */,
 				71CCE4CC2E4F258A002FE508 /* background.js in Resources */,
 				D76921F02756452E00EB4CEA /* _locales in Resources */,
-				AFB705FA2F9ED9BB00BF79E7 /* blocked.html in Resources */,
-				AFB705FB2F9ED9BB00BF79E7 /* blocked.js in Resources */,
 				D76921F82756452E00EB4CEA /* content.js in Resources */,
 				D76921FE2756452E00EB4CEA /* popup.js in Resources */,
 				D714AB832DF7403500854882 /* selectors.js in Resources */,
@@ -552,8 +542,6 @@
 				D769221827564D8F00EB4CEA /* style.css in Resources */,
 				71CCE4CB2E4F258A002FE508 /* background.js in Resources */,
 				D76921F12756452E00EB4CEA /* _locales in Resources */,
-				AFB705F82F9ED9BB00BF79E7 /* blocked.html in Resources */,
-				AFB705F92F9ED9BB00BF79E7 /* blocked.js in Resources */,
 				D76921F92756452E00EB4CEA /* content.js in Resources */,
 				D76921FF2756452E00EB4CEA /* popup.js in Resources */,
 				D714AB822DF7403500854882 /* selectors.js in Resources */,
@@ -794,7 +782,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ulriklyngs.mind-shield";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ulriklyngs.mind-shield.mind-shield";
 				PRODUCT_NAME = "ReDD Focus Extension";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -827,7 +815,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ulriklyngs.mind-shield";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ulriklyngs.mind-shield.mind-shield";
 				PRODUCT_NAME = "ReDD Focus Extension";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -947,7 +935,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ulriklyngs.mind-shield";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ulriklyngs.mind-shield.mind-shield";
 				PRODUCT_NAME = "ReDD Focus Extension";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
@@ -984,7 +972,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ulriklyngs.mind-shield";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ulriklyngs.mind-shield.mind-shield";
 				PRODUCT_NAME = "ReDD Focus Extension";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;

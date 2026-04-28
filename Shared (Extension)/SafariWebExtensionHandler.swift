@@ -38,8 +38,9 @@ import Foundation
 import os.log
 
 let SFExtensionMessageKey = "message"
+#if os(macOS)
 private let kAppGroupID = "group.com.reddblock.shared"
-private let kStatusFilename = "safari-status.json"
+#endif
 
 class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
@@ -47,62 +48,32 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         let request = context.inputItems.first as? NSExtensionItem
         let incoming = request?.userInfo?[SFExtensionMessageKey]
         os_log(.default, "ReDDFocus native message: %@", String(describing: incoming))
-        writeSafariStatus(from: incoming)
 
         let response = NSExtensionItem()
         response.userInfo = [SFExtensionMessageKey: buildPayload()]
         context.completeRequest(returningItems: [response], completionHandler: nil)
     }
 
-    /// Mirror the extension's reported state into the App Group
-    /// container so the redd-block app can read it without any
-    /// permission prompts. The "Allow in Private Browsing" toggle
-    /// comes from `browser.extension.isAllowedIncognitoAccess()` on
-    /// the JS side — we forward whatever it reports (including
-    /// `false`) so the Rust scanner can tell "off" apart from
-    /// "extension hasn't checked in yet."
-    private func writeSafariStatus(from incoming: Any?) {
-        guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: kAppGroupID) else {
-            return
-        }
-
-        let message = incoming as? [String: Any]
-        let version = (message?["version"] as? String)
-            ?? Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-            ?? Bundle.main.infoDictionary?["CFBundleVersion"] as? String
-        var payload: [String: Any] = [
-            "installed": true,
-            "enabled": true,
-            "version": version as Any,
-            "lastWriteEpochMs": UInt64(Date().timeIntervalSince1970 * 1000),
-        ]
-        if let value = message?["privateBrowsing"] as? Bool {
-            payload["privateBrowsing"] = value
-        }
-        guard JSONSerialization.isValidJSONObject(payload),
-              let data = try? JSONSerialization.data(withJSONObject: payload, options: [.prettyPrinted])
-        else {
-            return
-        }
-
-        do {
-            try data.write(to: container.appendingPathComponent(kStatusFilename), options: [.atomic])
-        } catch {
-            os_log(.error, "Failed to write Safari status: %@", String(describing: error))
-        }
-    }
-
     /// Build `{ blocklist, blocks }` matching the Rust `send_payload`
     /// shape so background.js can render the same metadata in Safari
     /// as in Chrome.
     private func buildPayload() -> [String: Any] {
+        #if os(macOS)
         let (domains, blocks) = derivePayload()
         return [
             "blocklist": domains,
             "blocks": blocks,
         ]
+        #else
+        // iOS ReDD Focus is standalone and does not link to ReDD Block.
+        return [
+            "blocklist": [],
+            "blocks": [],
+        ]
+        #endif
     }
 
+    #if os(macOS)
     private func derivePayload() -> ([String], [[String: Any]]) {
         guard let url = reddBlockDataURL(),
               let data = try? Data(contentsOf: url),
@@ -270,4 +241,5 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         return home
             .appendingPathComponent("Library/Application Support/com.redd.block/redd-block-data.json")
     }
+    #endif
 }

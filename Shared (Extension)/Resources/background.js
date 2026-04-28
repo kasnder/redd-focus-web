@@ -28,6 +28,9 @@ const BACKOFF_MAX = 5 * 60_000;
 // because the extension ID is only known once the service worker is up.
 const BLOCKED_PAGE_PREFIX = chrome.runtime.getURL("blocked.html");
 const IS_SAFARI = BLOCKED_PAGE_PREFIX.startsWith("safari-web-extension://");
+const IS_IOS = /\b(iPhone|iPad|iPod)\b/i.test(navigator.userAgent || "")
+  || (/\bMacintosh\b/i.test(navigator.userAgent || "") && /\bMobile\//i.test(navigator.userAgent || ""));
+const USE_REDD_BLOCK_NATIVE = !IS_IOS;
 
 function hostnameOf(url) {
   try {
@@ -138,32 +141,13 @@ function sweepAllTabsForBlocks() {
   });
 }
 
-// Resolve the configured "Allow in Private Browsing" toggle for this
-// extension. Unlike `tab.incognito` (which only fires when the
-// extension is *currently running* in a private tab), this returns
-// the configured state regardless of whether a private window is
-// open — so we can give the redd-block app a reliable negative
-// signal too.
-async function safariAllowedInPrivateBrowsing() {
-  try {
-    const ext = (typeof browser !== "undefined" && browser.extension) || chrome.extension;
-    if (!ext || typeof ext.isAllowedIncognitoAccess !== "function") return null;
-    return await ext.isAllowedIncognitoAccess();
-  } catch (e) {
-    console.info("[redd-block] isAllowedIncognitoAccess threw:", e && e.message);
-    return null;
-  }
-}
-
-async function pingSafariNative() {
-  if (!IS_SAFARI) return;
+async function refreshSafariBlocklist() {
+  if (!IS_SAFARI || !USE_REDD_BLOCK_NATIVE) return;
   if (!chrome.runtime || typeof chrome.runtime.sendNativeMessage !== "function") return;
-  const allowed = await safariAllowedInPrivateBrowsing();
   const payload = {
-    type: "safariStatus",
+    type: "reddBlockRefresh",
     version: chrome.runtime.getManifest && chrome.runtime.getManifest().version,
   };
-  if (allowed !== null) payload.privateBrowsing = allowed;
   try {
     chrome.runtime.sendNativeMessage(
       NATIVE_HOST,
@@ -182,6 +166,7 @@ async function pingSafariNative() {
 }
 
 function connectNative() {
+  if (!USE_REDD_BLOCK_NATIVE) return;
   // Graceful no-op if native messaging isn't available (e.g., older
   // Safari builds, stripped-down platforms).
   if (!chrome.runtime || typeof chrome.runtime.connectNative !== "function") {
@@ -209,7 +194,7 @@ function connectNative() {
 }
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  pingSafariNative();
+  refreshSafariBlocklist();
   // Cheap early-out when standalone (empty blocklist).
   if (blocklist.length === 0) return;
   const url = changeInfo.url || tab.url;
@@ -219,13 +204,13 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 });
 
 connectNative();
-pingSafariNative();
-// Keep the safari-status.json heartbeat fresh even when the user sits
-// on a single tab. Rust treats the file as stale after 45 s, so a
-// 15 s tick tolerates one missed beat (jitter) but lets the gate
-// detect a disabled extension within ~30–45 s.
-if (IS_SAFARI) {
-  setInterval(pingSafariNative, 15 * 1000);
+refreshSafariBlocklist();
+// Safari's native handler is request/response only, so keep polling
+// for ReDD Block payload changes even when the user sits on a single
+// tab. Compliance is verified by ReDD Block from Safari's plist, not
+// by this refresh.
+if (IS_SAFARI && USE_REDD_BLOCK_NATIVE) {
+  setInterval(refreshSafariBlocklist, 15 * 1000);
 }
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
